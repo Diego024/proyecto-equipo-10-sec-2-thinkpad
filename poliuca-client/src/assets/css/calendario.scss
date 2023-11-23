@@ -1,0 +1,175 @@
+@import url("https://fonts.googleapis.com/css2?family=Cabin&display=swap");
+
+body {
+  background-color: white;
+  padding: 0;
+  margin: 0;
+  border-radius: 1rem;
+}
+/* 
+header {
+  display: flex;
+  background-color: white;
+  padding: 1rem;
+
+  height: 2rem;
+  justify-content: space-evenly;
+  .menu-image {
+    display: flex;
+  }
+
+  .logo-image {
+  }
+}
+
+ */
+.body-div {
+  height: auto;
+  background-color: #fafafa;
+  margin: 0 0.725rem;
+  border-radius: 1rem 1rem 0 0;
+  border: 1px solid rgb(201, 201, 201);
+}
+
+header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0.725rem; /* Ajusta el espacio entre los elementos según sea necesario */
+  .menu-image {
+    width: 1.725rem; /* Ajusta el ancho según sea necesario */
+    &:hover {
+      cursor: pointer;
+    }
+  }
+
+  .logo-image {
+    width: 4.5rem; /* Ajusta el ancho según sea necesario */
+    margin: 0 auto; /* Centra el elemento horizontalmente */
+    padding-right: 2rem;
+  }
+}
+
+.cards {
+  font-family: "Cabin", sans-serif;
+
+  .card {
+    width: auto;
+    height: 5rem;
+    display: flex;
+    flex-flow: nowrap;
+    padding: 1rem;
+
+    border-radius: 0.5rem;
+    background-color: rgb(239, 238, 238);
+
+    align-items: center;
+    border-radius: 1rem;
+    margin: 1.5rem;
+
+    p {
+      font-size: 0.8rem;
+    }
+
+    &.volleyball {
+      background-color: rgba(201, 29, 146, 0.162);
+      span {
+        color: rgba(201, 29, 146, 0.771);
+        font-weight: bold;
+      }
+      p {
+        color: #898989;
+      }
+
+      .day {
+        color: rgba(201, 29, 146, 0.771);
+      }
+    }
+
+    &.basket {
+      background-color: #fd691f25;
+      span {
+        color: #fd691fae;
+        font-weight: bold;
+      }
+      p {
+        color: #898989;
+      }
+      .day {
+        color: #fd691fae;
+      }
+    }
+
+    &.football {
+      background-color: #ffd6092e;
+      span {
+        color: #e3be04;
+        font-weight: bold;
+      }
+      p {
+        color: #898989;
+      }
+
+      .day {
+        color: #e3be04;
+      }
+    }
+
+    &.otroColor {
+      background-color: #152a8913;
+      span {
+        color: rgba(21, 42, 137, 0.521) 3;
+        font-weight: bold;
+      }
+      p {
+        color: #898989;
+      }
+
+      .day {
+        color: rgba(21, 42, 137, 0.521) 3;
+      }
+    }
+
+    div.date-container {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      text-align: center;
+      background-color: white;
+      min-width: 5rem;
+      min-height: 3rem;
+      margin: 0.725rem;
+      border-radius: 1rem;
+      line-height: 1.2;
+      font-size: 0.8rem;
+
+      .day {
+        width: auto;
+        font-size: 2rem;
+        font-weight: bold;
+        margin-bottom: -15px;
+        margin-top: 0.725rem;
+      }
+
+      .month {
+        width: auto;
+        font-weight: bold;
+      }
+    }
+  }
+}
+
+.page-title {
+  margin: 1rem;
+  margin-bottom: 2rem;
+  font-size: 1.5rem;
+}
+
+.date-line {
+  position: relative;
+  .date {
+    position: absolute;
+    top: -4.3rem;
+    padding: 0 1rem;
+  }
+}
