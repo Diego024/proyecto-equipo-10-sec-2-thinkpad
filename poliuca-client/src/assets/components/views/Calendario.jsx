@@ -1,14 +1,12 @@
 import "../../css/calendario.scss";
 import Logo from "../icons/Logo.jsx";
+import MenuIcon from "../../img/icon/open-menu.png";
+
 function Calendario() {
   return (
     <>
       <header>
-        <img
-          className="menu-image"
-          src="../../src/assets/img/open-menu.png"
-          alt="MENU"
-        />
+        <img className="menu-image" src={MenuIcon} alt="MENU" />
 
         <Logo />
       </header>
