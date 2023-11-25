@@ -55,10 +55,10 @@ header {
 
   .card {
     width: auto;
-    height: 5rem;
+    // height: 5rem;
     display: flex;
+    position: relative;
     flex-flow: nowrap;
-    padding: 1rem;
 
     border-radius: 0.5rem;
     background-color: rgb(239, 238, 238);
@@ -154,6 +154,7 @@ header {
       .month {
         width: auto;
         font-weight: bold;
+        margin: 1rem;
       }
     }
   }
@@ -166,10 +167,10 @@ header {
 }
 
 .date-line {
-  position: relative;
+  // position: relative;
   .date {
     position: absolute;
-    top: -4.3rem;
+    top: -1rem;
     padding: 0 1rem;
   }
 }
