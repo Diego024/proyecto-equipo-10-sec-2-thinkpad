@@ -55,10 +55,10 @@ header {
 
   .card {
     width: auto;
-    // height: 5rem;
+    height: 5rem;
     display: flex;
-    position: relative;
-    flex-flow: nowrap;
+    flex-wrap: nowrap;
+    padding: 1rem;
 
     border-radius: 0.5rem;
     background-color: rgb(239, 238, 238);
@@ -68,67 +68,24 @@ header {
     margin: 1.5rem;
     box-shadow: 2px 2px 2px 2px rgba(128, 128, 128, 0.336);
 
+    &.lunes {
+      border: 1px solid #132a87;
+    }
+    &.martes {
+      border: 1px solid #fd6a1f;
+    }
+    &.miercoles {
+      border: 1px solid #d4af00;
+    }
+    &.jueves {
+      border: 1px solid #c91d92;
+    }
+    &.viernes {
+      border: 1px solid #898989;
+    }
     p {
       font-size: 0.8rem;
-    }
-
-    &.volleyball {
-      background-color: rgba(201, 29, 146, 0.162);
-      span {
-        color: rgba(201, 29, 146, 0.771);
-        font-weight: bold;
-      }
-      p {
-        color: #898989;
-      }
-
-      .day {
-        color: rgba(201, 29, 146, 0.771);
-      }
-    }
-
-    &.basket {
-      background-color: #fd691f25;
-      span {
-        color: #fd691fae;
-        font-weight: bold;
-      }
-      p {
-        color: #898989;
-      }
-      .day {
-        color: #fd691fae;
-      }
-    }
-
-    &.football {
-      background-color: #ffd6092e;
-      span {
-        color: #e3be04;
-        font-weight: bold;
-      }
-      p {
-        color: #898989;
-      }
-
-      .day {
-        color: #e3be04;
-      }
-    }
-
-    &.otroColor {
-      background-color: #152a8913;
-      span {
-        color: rgba(21, 42, 137, 0.521) 3;
-        font-weight: bold;
-      }
-      p {
-        color: #898989;
-      }
-
-      .day {
-        color: rgba(21, 42, 137, 0.521) 3;
-      }
+      color: #898989;
     }
 
     div.date-container {
@@ -138,7 +95,7 @@ header {
       text-align: center;
       background-color: white;
       min-width: 5rem;
-      min-height: 3rem;
+      max-height: 4.2rem;
       margin: 0.725rem;
       border-radius: 1rem;
       line-height: 1.2;
@@ -155,7 +112,26 @@ header {
       .month {
         width: auto;
         font-weight: bold;
-        margin: 1rem;
+      }
+    }
+
+    .rectangle-container {
+      margin-right: 0.6rem;
+    }
+
+    .event-container {
+      display: flex;
+      flex-direction: column;
+      /* Ajusta el espacio entre los elementos según sea necesario */
+
+      .event-item {
+        height: 1.3rem;
+        display: flex;
+        align-items: center;
+        text-align: justify;
+        img {
+          margin-right: 0.2rem;
+        }
       }
     }
   }
@@ -168,10 +144,10 @@ header {
 }
 
 .date-line {
-  // position: relative;
+  position: relative;
   .date {
     position: absolute;
-    top: -1rem;
+    top: -4.3rem;
     padding: 0 1rem;
   }
 }
@@ -218,6 +194,38 @@ header {
       position: absolute;
       top: -3.8rem;
       padding: 0 1rem;
+    }
+  }
+
+  .event-container {
+    .event-item {
+      img {
+        width: 0.51rem;
+      }
+    }
+  }
+}
+
+@media only screen and (max-width: 315px) {
+  .cards {
+    .card {
+      p {
+        font-size: 7px;
+      }
+
+      div.date-container {
+        margin-left: -0.2rem;
+        .day {
+          font-size: 2rem;
+          padding-bottom: 0.725rem;
+        }
+      }
+
+      .event-container {
+        p {
+          font-size: 7px;
+        }
+      }
     }
   }
 }

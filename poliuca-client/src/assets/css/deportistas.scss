@@ -1,0 +1,258 @@
+@import url("https://fonts.googleapis.com/css2?family=Cabin&display=swap");
+
+body {
+  background-color: white;
+  padding: 0;
+  margin: 0;
+  border-radius: 1rem;
+}
+/* 
+header {
+  display: flex;
+  background-color: white;
+  padding: 1rem;
+
+  height: 2rem;
+  justify-content: space-evenly;
+  .menu-image {
+    display: flex;
+  }
+
+  .logo-image {
+  }
+}
+
+ */
+.body-div {
+  height: auto;
+  background-color: #fafafa;
+  margin: 0 0.725rem;
+  height: 100%;
+  border-radius: 1rem 1rem 0 0;
+  border: 1px solid rgb(201, 201, 201);
+}
+
+header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0.725rem; /* Ajusta el espacio entre los elementos según sea necesario */
+  .menu-image {
+    width: 1.725rem; /* Ajusta el ancho según sea necesario */
+    &:hover {
+      cursor: pointer;
+    }
+  }
+
+  .logo-image {
+    width: 4.5rem; /* Ajusta el ancho según sea necesario */
+    margin: 0 auto; /* Centra el elemento horizontalmente */
+    padding-right: 2rem;
+  }
+}
+
+.container-opciones {
+  display: flex;
+  justify-content: space-between;
+  margin: 1rem;
+  margin-top: -1.6rem;
+  font-size: 18px;
+  text-align: center;
+  font-weight: bold;
+
+  .deportistas {
+    width: 50%;
+    height: 2.2rem;
+    border-radius: 0.5rem;
+    padding: 0.2rem;
+    margin: 1rem;
+    background-color: #132a87;
+    color: white;
+  }
+
+  .equipos {
+    width: 50%;
+    height: 2.2rem;
+    border-radius: 0.5rem;
+    padding: 0.2rem;
+    margin: 1rem;
+    background-color: white;
+    border: 1px solid #132a87;
+  }
+}
+
+.cards {
+  font-family: "Cabin", sans-serif;
+
+  .btn-agregar-deportista {
+    display: block;
+    text-align: right;
+    cursor: pointer;
+    text-decoration: underline;
+    font-size: 12px;
+    margin-right: 1.5rem;
+  }
+
+  .card {
+    width: auto;
+    height: 5rem;
+    display: flex;
+    flex-wrap: nowrap;
+    padding: 1rem;
+
+    border-radius: 0.5rem;
+    background-color: white;
+
+    align-items: center;
+    border-radius: 1rem;
+    margin: 1.5rem;
+    box-shadow: 2px 2px 2px 2px rgba(128, 128, 128, 0.336);
+    border: 1px solid #132a87;
+
+    p {
+      font-size: 0.8rem;
+      color: #898989;
+    }
+
+    div.profile-container {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      text-align: center;
+      background-color: white;
+      min-width: 4rem;
+      max-height: 4.2rem;
+      margin: 0.725rem;
+      border-radius: 1rem;
+      line-height: 1.2;
+      font-size: 0.8rem;
+    }
+
+    .info-container {
+      .nombre-deportista {
+        white-space: nowrap;
+        font-weight: bold;
+        p {
+          color: #132a87;
+          text-transform: uppercase;
+        }
+      }
+      .disciplinas {
+        p {
+          font-size: 0.6rem;
+          &:nth-child(2) {
+            font-weight: bold;
+            color: #132a87;
+            margin-top: -0.7rem;
+          }
+        }
+      }
+    }
+  }
+
+  .add-container {
+    display: flex;
+    justify-content: flex-end;
+    margin-right: 1.3rem;
+    margin-top: 1.3rem;
+    .add-btn {
+      width: 2rem;
+    }
+  }
+}
+
+.page-title {
+  margin: 1rem;
+  margin-bottom: 2rem;
+  font-size: 1.5rem;
+}
+
+@media only screen and (max-width: 418px) {
+  .cards {
+    .card {
+      p {
+        font-size: 8px;
+      }
+    }
+  }
+
+  header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0.725rem; /* Ajusta el espacio entre los elementos según sea necesario */
+
+    .menu-image {
+      width: 1rem; /* Ajusta el ancho según sea necesario */
+      &:hover {
+        cursor: pointer;
+      }
+    }
+
+    .logo-image {
+      width: 4rem; /* Ajusta el ancho según sea necesario */
+      margin: 0 auto; /* Centra el elemento horizontalmente */
+      position: relative;
+      left: 0.725rem;
+    }
+  }
+
+  .page-title {
+    margin: 1rem;
+    margin-bottom: 2rem;
+    font-size: 1.1rem;
+  }
+}
+
+@media only screen and (max-width: 330px) {
+  .cards {
+    .btn-agregar-deportista {
+      display: block;
+      text-align: right;
+      cursor: pointer;
+      text-decoration: underline;
+      font-size: 10px;
+      margin-right: 1.5rem;
+    }
+    .card {
+      width: auto p {
+        font-size: 7px;
+      }
+
+      div.profile-container {
+        margin-left: 0.2rem;
+        min-width: 2.4rem;
+        img {
+          width: auto;
+        }
+      }
+
+      .info-container {
+        .nombre-deportista {
+          font-weight: bold;
+          white-space: nowrap;
+          p {
+            color: #132a87;
+            text-transform: uppercase;
+          }
+        }
+        .disciplinas {
+          p {
+            font-size: 0.5rem;
+            &:nth-child(2) {
+              font-weight: bold;
+              color: #132a87;
+              margin-top: -0.5rem;
+            }
+          }
+        }
+      }
+    }
+
+    .add-container {
+      .add-btn {
+        width: 1.5rem;
+      }
+    }
+  }
+}

@@ -38,7 +38,6 @@ function Logo() {
           fill="#FFD409"
         />
       </svg>
-      ;
     </>
   );
 }

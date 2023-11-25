@@ -7,7 +7,6 @@ function Calendario() {
     <>
       <header>
         <img className="menu-image" src={MenuIcon} alt="MENU" />
-
         <Logo />
       </header>
 
