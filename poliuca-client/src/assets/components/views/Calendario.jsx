@@ -9,7 +9,6 @@ function Calendario() {
           src="../../src/assets/img/open-menu.png"
           alt="MENU"
         />
-
         <Logo />
       </header>
 
