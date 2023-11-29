@@ -19,7 +19,7 @@ function Equipos() {
 
         <div className="container-opciones">
           <div className="deportistas">Deportistas</div>
-          <div className="equipos">Equipos</div>
+          <div className="equipos select">Equipos</div>
         </div>
 
         <a className="btn-agregar-deportista">Agregar nuevo equipo</a>

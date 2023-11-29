@@ -167,6 +167,26 @@
           p {
             font-size: 10px;
           }
+          &.volleyball {
+            p {
+              color: #c91d92;
+            }
+          }
+          &.basket {
+            p {
+              color: #fd6a1f;
+            }
+          }
+          &.futbol {
+            p {
+              color: #132a87;
+            }
+          }
+          &.run {
+            p {
+              color: #d4af00;
+            }
+          }
         }
         .fecha-creacion {
           p {
