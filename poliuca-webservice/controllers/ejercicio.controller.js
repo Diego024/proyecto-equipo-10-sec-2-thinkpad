@@ -22,12 +22,18 @@ ejercicioController.create=async(req,res,next)=>{
     }
 }
 
-ejercicioController.create=()=>{
-    
-}
 
-ejercicioController.findAll=()=>{
-    
+
+ejercicioController.findAll= async(req,res,next)=>{
+    try{
+       
+        const ejercicio = await  Ejercicio.findAll({hidden:false});
+        
+        return res.status(200).json({ejercicio});
+    }catch(e){
+        console.error(e);
+        return res.status(500).json({error:"Error interno servidor"});
+    }
 }
 
 ejercicioController.create=()=>{

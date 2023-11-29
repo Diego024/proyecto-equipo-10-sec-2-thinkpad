@@ -1,5 +1,5 @@
 const Moongose = require("mongoose");
-const Scheme = Moongose.schema;
+const Scheme = Moongose.Schema;
 
 const EjercicioSchema = new Scheme({
 name:{
@@ -27,4 +27,4 @@ hidden:{
 }
 },{timiestamps:true});
 
-module.export = Moongose.model("Ejericio",EjercicioSchema);
+module.export = Moongose.model("Ejercicio",EjercicioSchema);
