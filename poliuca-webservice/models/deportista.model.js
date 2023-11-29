@@ -1,7 +1,7 @@
 const Moongose = require("mongoose");
-const Scheme = Moongose.schema;
+const Scheme = Moongose.Schema;
 
-const SportSchema = new Scheme({name:{type:number}});
+const SportSchema = new Scheme({name:{type:Number}});
 
 
 const DeportistaSchema = new Scheme({
@@ -17,12 +17,12 @@ last_name:{
 },
 sports:[SportSchema],
 birth_date:{
-    Type:Date,
+    type:Date,
     required:true
 },
 height:{
     type: Number,
-    required:true,
+    required:true
 },
 weight:{
     type: Number,

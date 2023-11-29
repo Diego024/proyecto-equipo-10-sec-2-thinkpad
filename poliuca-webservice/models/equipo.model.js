@@ -1,5 +1,5 @@
 const Moongose = require("mongoose");
-const Scheme = Moongose.schema;
+const Scheme = Moongose.Schema;
 
 const EquipoSchema = new Scheme({
 id:{
