@@ -12,6 +12,7 @@ function Eventos() {
           src="../../src/assets/img/open-menu.png"
           alt="MENU"
         />
+
         <Logo />
       </header>
 
@@ -19,8 +20,8 @@ function Eventos() {
         <h1 className="page-title">Eventos del poliUCA</h1>
 
         <article className="card lunes">
-          <div className="date-line">
-            <p className="date">25/11/2023</p>
+          <div className="date-line-eventos">
+            <p className="date-eventos">25/11/2023</p>
           </div>
           <div className="date-container">
             <p className="day">25</p>
@@ -53,8 +54,8 @@ function Eventos() {
         </article>
 
         <article className="card martes">
-          <div className="date-line">
-            <p className="date">25/11/2023</p>
+          <div className="date-line-eventos">
+            <p className="date-eventos">25/11/2023</p>
           </div>
           <div className="date-container">
             <p className="day">25</p>
@@ -86,8 +87,8 @@ function Eventos() {
         </article>
 
         <article className="card miercoles">
-          <div className="date-line">
-            <p className="date">25/11/2023</p>
+          <div className="date-line-eventos">
+            <p className="date-eventos">25/11/2023</p>
           </div>
           <div className="date-container">
             <p className="day">25</p>
@@ -120,8 +121,8 @@ function Eventos() {
         </article>
 
         <article className="card jueves">
-          <div className="date-line">
-            <p className="date">25/11/2023</p>
+          <div className="date-line-eventos">
+            <p className="date-eventos">25/11/2023</p>
           </div>
           <div className="date-container">
             <p className="day">25</p>
@@ -153,8 +154,8 @@ function Eventos() {
         </article>
 
         <article className="card viernes">
-          <div className="date-line">
-            <p className="date">25/11/2023</p>
+          <div className="date-line-eventos">
+            <p className="date-eventos">25/11/2023</p>
           </div>
           <div className="date-container">
             <p className="day">25</p>
