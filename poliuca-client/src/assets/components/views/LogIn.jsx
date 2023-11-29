@@ -1,7 +1,8 @@
-import React from "react";
+/* import React from "react";
 import "../../css/LogIn.scss";
-import Logo from "./../../img/svg/Logo.svg";
-import GoogleIcon from "./../../img/svg/google-icon.svg";
+import Logo from "../../src/assets/img/svg/Logo.svg";
+import GoogleIcon from "../../src/assets/img/svg/google-icon.svg;
+
 
 const LogIn = (props) => {
   return (
@@ -44,3 +45,4 @@ const LogIn = (props) => {
 };
 
 export default LogIn;
+ */

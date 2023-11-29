@@ -67,34 +67,25 @@
       gap: 0.72rem;
 
       margin-bottom: 0.4rem;
-
-      .num {
-        background-color: rgb(20, 207, 220);
-        border-radius: 50%;
-        width: 13px;
-        height: 13px;
-        position: relative;
-        left: -0.1rem;
-        bottom: -0.1rem;
+      .basketball {
         p {
-          color: white;
-          position: relative;
-          left: 0.14rem;
-          top: 0.1rem;
-          font-weight: bold;
+          color: #fd6a1f;
         }
-        &.bkb {
-          background-color: #fd6a1f;
+      }
+      .volleyball {
+        p {
+          color: #c91d92;
         }
-        &.fut {
-          background-color: #132a87;
+      }
+
+      .futbol {
+        p {
+          color: #132a87;
         }
-        &.vol {
-          background-color: #c91d92;
-        }
-        &.atletismo {
-          background-color: #d4af00;
-        }
+      }
+
+      .run {
+        color: #d4af00;
       }
     }
   }

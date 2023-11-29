@@ -1,7 +1,7 @@
-import "../../css/equipos.scss";
+import "../../css/entrenamientos.scss";
 import Logo from "../icons/Logo.jsx";
 
-function Equipos() {
+function Entrenamientos() {
   return (
     <>
       <header>
@@ -15,15 +15,12 @@ function Equipos() {
       </header>
 
       <section className="cards body-div">
-        <h1 className="page-title">Gestion de Deportistas</h1>
-
+        <h1 className="page-title">Gestion de Entrenamientos</h1>
         <div className="container-opciones">
-          <div className="deportistas">Deportistas</div>
-          <div className="equipos">Equipos</div>
+          <div className="deportistas">Ejercicios</div>
+          <div className="equipos">Rutinas</div>
         </div>
-
-        <a className="btn-agregar-deportista">Agregar nuevo equipo</a>
-
+        {/* <a className="btn-agregar-deportista">Agregar nuevo equipo</a> */}
         <article className="card bkb">
           <div className="ball-container bkb">
             <img
@@ -34,22 +31,21 @@ function Equipos() {
 
           <div className="deporte-container">
             <div className="seleccion">
-              <p>Selección UCA</p>
+              <p>Rutina de Fundamentales</p>
             </div>
             <div className="fecha-creacion">
-              <p>Fecha de creacion:</p>
-              <p className="bkb">25 de enero del 2023 </p>
+              <p>Tipo: </p>
+              <p className="bkb">Grupal</p>
             </div>
             <div className="numero-jugadores">
-              <p>N° de jugadores:</p>
+              <p>Disciplina:</p>
 
-              <div className="num bkb">
-                <p>14</p>
+              <div className="basketball">
+                <p>Basketball</p>
               </div>
             </div>
           </div>
         </article>
-
         <article className="card vol">
           <div className="ball-container vol">
             <img src="../../src/assets/img/volleyball 1.png" alt="volleyball" />
@@ -57,23 +53,21 @@ function Equipos() {
 
           <div className="deporte-container">
             <div className="seleccion">
-              <p className="baloncesto">Selección UCA</p>
+              <p>Rutina de Fundamentales</p>
             </div>
             <div className="fecha-creacion">
-              <p>Fecha de creacion:</p>
-              <p className="vol">25 de enero del 2023 </p>
+              <p>Tipo: </p>
+              <p className="vol">Grupal</p>
             </div>
             <div className="numero-jugadores">
-              <p>N° de jugadores:</p>
+              <p>Disciplina:</p>
 
-              <div className="num vol">
-                {" "}
-                <p>14</p>
+              <div className="volleyball">
+                <p>Basketball</p>
               </div>
             </div>
           </div>
         </article>
-
         <article className="card fut">
           <div className="ball-container fut">
             <img src="../../src/assets/img/soccer 1.png" alt="volleyball" />
@@ -81,23 +75,21 @@ function Equipos() {
 
           <div className="deporte-container">
             <div className="seleccion">
-              <p>Selección UCA</p>
+              <p>Rutina de sets y saque</p>
             </div>
             <div className="fecha-creacion">
-              <p>Fecha de creacion:</p>
-              <p className="fut">25 de enero del 2023 </p>
+              <p>Tipo: </p>
+              <p className="fut">Grupal</p>
             </div>
             <div className="numero-jugadores">
-              <p>N° de jugadores:</p>
+              <p>Disciplina:</p>
 
-              <div className="num fut">
-                {" "}
-                <p>14</p>
+              <div className="futbol">
+                <p>Basketball</p>
               </div>
             </div>
           </div>
         </article>
-
         <article className="card atletismo">
           <div className="ball-container atletismo">
             <img src="../../src/assets/img/sports 1.png" alt="volleyball" />
@@ -105,47 +97,43 @@ function Equipos() {
 
           <div className="deporte-container">
             <div className="seleccion">
-              <p>Selección UCA</p>
+              <p>Rutina de Fundamentales</p>
             </div>
             <div className="fecha-creacion">
-              <p>Fecha de creacion:</p>
-              <p className="atletismo">25 de enero del 2023 </p>
+              <p>Tipo: </p>
+              <p className="atletismo">Grupal</p>
             </div>
             <div className="numero-jugadores">
-              <p>N° de jugadores:</p>
+              <p>Disciplina:</p>
 
-              <div className="num atletismo">
-                {" "}
-                <p>14</p>
+              <div className="run">
+                <p>Basketball</p>
               </div>
             </div>
           </div>
         </article>
-
-        <article className="card bkb">
-          <div className="ball-container bkb">
+        <article className="card vol">
+          <div className="ball-container vol">
             <img src="../../src/assets/img/volleyball 1.png" alt="volleyball" />
           </div>
 
           <div className="deporte-container">
-            <div className="seleccion ">
-              <p>Selección UCA</p>
+            <div className="seleccion">
+              <p>Rutina de Fundamentales</p>
             </div>
             <div className="fecha-creacion">
-              <p>Fecha de creacion:</p>
-              <p className="vol">25 de enero del 2023 </p>
+              <p>Tipo: </p>
+              <p className="vol">Grupal</p>
             </div>
             <div className="numero-jugadores">
-              <p>N° de jugadores:</p>
+              <p>Disciplina:</p>
 
-              <div className="num bkb">
-                {" "}
-                <p>14</p>
+              <div className="volleyball">
+                <p>Basketball</p>
               </div>
             </div>
           </div>
         </article>
-
         <figure className="add-container">
           <img
             className="add-btn"
@@ -158,4 +146,4 @@ function Equipos() {
   );
 }
 
-export default Equipos;
+export default Entrenamientos;
