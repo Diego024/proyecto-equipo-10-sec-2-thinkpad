@@ -7,6 +7,7 @@ import Eventos from "./assets/components/views/Eventos";
 import Deportistas from "./assets/components/views/Deportistas";
 import Equipos from "./assets/components/views/Equipos";
 import Entrenamientos from "./assets/components/views/Entrenamientos";
+import Ejercicios from "./assets/components/views/Ejercicios";
 
 function App() {
   return (
@@ -19,6 +20,7 @@ function App() {
           <Route path="/deportistas" element={<Deportistas />} />
           <Route path="/equipos" element={<Equipos />} />
           <Route path="/entrenamientos" element={<Entrenamientos />} />
+          <Route path="/ejercicios" element={<Ejercicios />} />
         </Routes>
       </BrowserRouter>
     </>

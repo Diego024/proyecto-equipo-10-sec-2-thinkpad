@@ -17,7 +17,7 @@ function Deportistas() {
         <h1 className="page-title">Gestion de Deportistas</h1>
 
         <div className="container-opciones">
-          <div className="deportistas">Deportistas</div>
+          <div className="deportistas select">Deportistas</div>
           <div className="equipos">Equipos</div>
         </div>
 

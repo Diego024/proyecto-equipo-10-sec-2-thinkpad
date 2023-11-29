@@ -30,7 +30,7 @@ function Entrenamientos() {
           </div>
 
           <div className="deporte-container">
-            <div className="seleccion">
+            <div className="seleccion basket">
               <p>Rutina de Fundamentales</p>
             </div>
             <div className="fecha-creacion">
@@ -52,7 +52,7 @@ function Entrenamientos() {
           </div>
 
           <div className="deporte-container">
-            <div className="seleccion">
+            <div className="seleccion volleyball">
               <p>Rutina de Fundamentales</p>
             </div>
             <div className="fecha-creacion">
@@ -74,7 +74,7 @@ function Entrenamientos() {
           </div>
 
           <div className="deporte-container">
-            <div className="seleccion">
+            <div className="seleccion futbol">
               <p>Rutina de sets y saque</p>
             </div>
             <div className="fecha-creacion">
@@ -96,7 +96,7 @@ function Entrenamientos() {
           </div>
 
           <div className="deporte-container">
-            <div className="seleccion">
+            <div className="seleccion run ">
               <p>Rutina de Fundamentales</p>
             </div>
             <div className="fecha-creacion">
@@ -118,7 +118,7 @@ function Entrenamientos() {
           </div>
 
           <div className="deporte-container">
-            <div className="seleccion">
+            <div className="seleccion volleyball">
               <p>Rutina de Fundamentales</p>
             </div>
             <div className="fecha-creacion">

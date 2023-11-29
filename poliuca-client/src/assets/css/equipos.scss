@@ -71,8 +71,8 @@
       .num {
         background-color: rgb(20, 207, 220);
         border-radius: 50%;
-        width: 13px;
-        height: 13px;
+        width: 17px;
+        height: 17px;
         position: relative;
         left: -0.1rem;
         bottom: -0.1rem;
@@ -82,6 +82,7 @@
           left: 0.14rem;
           top: 0.1rem;
           font-weight: bold;
+          font-size: 12px;
         }
         &.bkb {
           background-color: #fd6a1f;
