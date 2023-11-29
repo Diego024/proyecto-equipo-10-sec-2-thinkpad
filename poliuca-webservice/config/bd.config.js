@@ -4,9 +4,9 @@ const Mongoose = require("mongoose");
 const debug = require("debug")("app.database");
 
 //Estos elementos se obtienen de variables de entorno
-const dbhost=process.env.DBHOST || "localhost";
+const dbhost=process.env.DBHOST || "127.0.0.1";
 const dbport=process.env.DBPORT || "27017";
-const dbname=process.env.DBNAME || "poliuca-bd";
+const dbname=process.env.DBNAME || "poliuca";
 
 //Uri de conexion:
 const dburi =process.env.DBURI ||`mongodb://${dbhost}:${dbport}/${dbname}`;
