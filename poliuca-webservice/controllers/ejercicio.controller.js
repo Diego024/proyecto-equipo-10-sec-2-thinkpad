@@ -1,10 +1,11 @@
 const Ejercicio = require("../models/ejercicio.model");
 
-const ejercicioController ={};
+const ejercicioController = {};
 
 ejercicioController.create=async(req,res,next)=>{
- const{name,grupo_muscular,imagen,equipo} = req.body;
+ 
     try{
+        const{name,grupo_muscular,imagen,equipo} = req.body;
         const ejercicio = new Ejercicio({
             name:name,
             grupo_muscular:grupo_muscular,
@@ -27,7 +28,7 @@ ejercicioController.create=async(req,res,next)=>{
 ejercicioController.findAll= async(req,res,next)=>{
     try{
        
-        const ejercicio = await  Ejercicio.findAll({hidden:false});
+        const ejercicio = await  Ejercicio.find({hidden:false});
         
         return res.status(200).json({ejercicio});
     }catch(e){
@@ -36,8 +37,23 @@ ejercicioController.findAll= async(req,res,next)=>{
     }
 }
 
-ejercicioController.create=()=>{
-    
+ejercicioController.finOneById= async(req,res,next)=>{
+    try{
+       const{identifier} = req.params;
+
+       const post = await Ejercicio.findById(identifier);
+        
+       if(!ejercicio){
+          return res.status(404).json({error:"Ejercicio no definido"});
+       }
+
+        return res.status(200).json(ejercicio);
+    }catch(e){
+        console.error(e);
+        return res.status(500).json({error:"Error interno servidor"});
+    }
 }
+
+
 
 module.exports = ejercicioController;

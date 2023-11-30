@@ -36,8 +36,21 @@ rutinaController.findAll= async(req,res,next)=>{
     }
 }
 
-rutinaController.findById=()=>{
-    
+rutinaController.finOneById= async(req,res,next)=>{
+    try{
+       const{identifier} = req.params;
+
+       const rutina = await Rutina.findById(identifier);
+        
+       if(!rutina){
+          return res.status(404).json({error:"Ejercicio no definido"});
+       }
+
+        return res.status(200).json(rutina);
+    }catch(e){
+        console.error(e);
+        return res.status(500).json({error:"Error interno servidor"});
+    }
 }
 
 module.exports = rutinaController;
