@@ -6,6 +6,7 @@ const deportistaController = require("../controllers/deportista.controller");
 
 //post
 router.get("/getAll/",deportistaController.findAll);
+router.get("/:identifier/",deportistaController.finOneById);
 router.post("/create/",deportistaController.create); 
 
 module.exports = router;
