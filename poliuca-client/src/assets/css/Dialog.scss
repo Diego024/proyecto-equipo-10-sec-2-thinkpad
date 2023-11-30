@@ -1,0 +1,133 @@
+$main-color: #132a87;
+
+body.modal-open {
+  overflow: hidden;
+}
+
+.overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.4);
+  z-index: 999;
+  display: none;
+}
+
+.overlay.open {
+  display: block;
+}
+
+.dialog {
+  opacity: 0;
+  pointer-events: none;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: white;
+  //   padding: 20px;
+  border: 1px solid #ccc;
+  border-radius: 25px;
+  transition: opacity 0.3s ease, pointer-events 0s 0.3s;
+  z-index: 1000;
+
+  -webkit-box-shadow: 5px 5px 10px 0px rgba(0, 0, 0, 0.25);
+  -moz-box-shadow: 5px 5px 10px 0px rgba(0, 0, 0, 0.25);
+  box-shadow: 5px 5px 10px 0px rgba(0, 0, 0, 0.25);
+
+  -webkit-box-shadow: -5px -5px 10px 0px rgba(0, 0, 0, 0.25);
+  -moz-box-shadow: -5px -5px 10px 0px rgba(0, 0, 0, 0.25);
+  box-shadow: -5px -5px 10px 0px rgba(0, 0, 0, 0.25);
+}
+
+.dialog.open {
+  opacity: 1;
+  pointer-events: auto;
+  transition: opacity 0.3s ease, pointer-events 0s 0s;
+}
+
+.dialog-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1.25rem;
+
+  h1 {
+    color: $main-color;
+    font-size: 1.125rem;
+  }
+
+  figure {
+    cursor: pointer;
+  }
+}
+
+.dialog-content {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  padding: 1rem 1.875rem;
+}
+
+.dialog label {
+  margin-bottom: 8px;
+}
+
+.dialog-actions {
+  //   margin-top: 16px;
+  display: flex;
+  justify-content: flex-end;
+  gap: 0.4rem;
+  padding: 1.25rem;
+
+  .btn {
+    padding: 0.25rem 1.375rem;
+    border-radius: 5px;
+    font-size: 0.875rem;
+    font-weight: bold;
+    width: 6.125rem;
+    cursor: pointer;
+
+    &.cancel {
+      background: none;
+      border: 1px solid #898989;
+      color: #898989;
+    }
+    &.submit {
+      padding: 0;
+      background: $main-color;
+      border: 1px solid $main-color;
+      color: white;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 0.3rem;
+    }
+  }
+}
+
+.dialog-separator {
+  height: 1px;
+  width: 100%;
+  background: #d9d9d9;
+}
+
+@media screen and (max-width: 600px) {
+  .dialog {
+    width: 90%;
+  }
+}
+
+@media screen and (min-width: 601px) {
+  .dialog {
+    width: 50%;
+  }
+}
+
+@media screen and (min-width: 1200px) {
+  .dialog {
+    width: 40%;
+  }
+}

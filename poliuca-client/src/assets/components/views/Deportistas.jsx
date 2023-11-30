@@ -1,7 +1,24 @@
+import { useState } from "react";
 import "../../css/deportistas.scss";
 import Logo from "../icons/Logo.jsx";
+import Dialog from "../layout/Dialog.jsx";
+import Input from "../layout/Input.jsx";
 
 function Deportistas() {
+  const [dialogOpen, setDialogOpen] = useState(true);
+
+  const handleOpenDialog = () => {
+    setDialogOpen(true);
+  };
+
+  const handleCloseDialog = () => {
+    setDialogOpen(false);
+  };
+
+  const handleSubmit = () => {
+    alert("Buenos días, mis estimados");
+  };
+
   return (
     <>
       <header>
@@ -21,7 +38,9 @@ function Deportistas() {
           <div className="equipos">Equipos</div>
         </div>
 
-        <a className="btn-agregar-deportista">Agregar nuevo deportista</a>
+        <a className="btn-agregar-deportista" onClick={handleOpenDialog}>
+          Agregar nuevo deportista
+        </a>
 
         <article className="card">
           <div className="profile-container">
@@ -103,7 +122,7 @@ function Deportistas() {
           </div>
         </article>
 
-        <figure className="add-container">
+        <figure className="add-container" onClick={handleOpenDialog}>
           <img
             className="add-btn"
             src="../../src/assets/img/Add.png"
@@ -111,6 +130,54 @@ function Deportistas() {
           />
         </figure>
       </section>
+      <Dialog
+        title={"Gestión de deportistas"}
+        open={dialogOpen}
+        onClose={handleCloseDialog}
+        handleSubmit={handleSubmit}
+      >
+        <Input
+          label={"Nombres"}
+          placeholder={"Ingresa los nombres"}
+          type={"text"}
+          name={"name"}
+        />
+
+        <Input
+          label={"Apellidos"}
+          placeholder={"Ingresa los apellidos"}
+          type={"text"}
+          name={"lastname"}
+        />
+
+        <Input
+          label={"Correo electrónico"}
+          placeholder={"Ingresa el correo electrónico"}
+          type={"email"}
+          name={"email"}
+        />
+
+        <Input
+          label={"Peso (lb)"}
+          placeholder={"Ingresa el peso en libras"}
+          type={"number"}
+          name={"weight"}
+        />
+
+        <Input
+          label={"Altura (cm)"}
+          placeholder={"Ingresa la altura en centímetros"}
+          type={"number"}
+          name={"height"}
+        />
+
+        <Input
+          label={"Fecha de nacimiento"}
+          placeholder={"Ingresa la fecha de nacimiento"}
+          type={"date"}
+          name={"birthdate"}
+        />
+      </Dialog>
     </>
   );
 }
