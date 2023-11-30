@@ -1,10 +1,16 @@
-/* import React from "react";
+import React from "react";
+import { useNavigate } from "react-router-dom";
 import "../../css/LogIn.scss";
-import Logo from "../../src/assets/img/svg/Logo.svg";
-import GoogleIcon from "../../src/assets/img/svg/google-icon.svg;
-
+import Logo from "./../../img/svg/Logo.svg";
+import GoogleIcon from "./../../img/svg/google-icon.svg";
 
 const LogIn = (props) => {
+  const navigate = useNavigate();
+
+  const handleSubmit = async () => {
+    navigate("/calendario");
+  };
+
   return (
     <div className="login-view">
       <main className="login-container">
@@ -36,7 +42,9 @@ const LogIn = (props) => {
               id="password"
               placeholder="Contraseña"
             />
-            <button type="submit">Iniciar Sesión</button>
+            <button type="submit" onClick={handleSubmit}>
+              Iniciar Sesión
+            </button>
           </form>
         </section>
       </main>
@@ -45,4 +53,3 @@ const LogIn = (props) => {
 };
 
 export default LogIn;
- */
