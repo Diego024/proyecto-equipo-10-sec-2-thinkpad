@@ -38,8 +38,21 @@ eventoController.findAll= async(req,res,next)=>{
     }
 }
 
-eventoController.findById=()=>{
-    
+eventoController.finOneById= async(req,res,next)=>{
+    try{
+       const{identifier} = req.params;
+
+       const evento = await Evento.findById(identifier);
+        
+       if(!evento){
+          return res.status(404).json({error:"Ejercicio no definido"});
+       }
+
+        return res.status(200).json(evento);
+    }catch(e){
+        console.error(e);
+        return res.status(500).json({error:"Error interno servidor"});
+    }
 }
 
 module.exports = eventoController;

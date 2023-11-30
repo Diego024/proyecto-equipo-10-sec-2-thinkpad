@@ -5,7 +5,7 @@ const deportistaController={};
 deportistaController.create= async(req,res,next)=>{
     const{name,last_name,sports,birth_date,height,weight,email} = req.body;
     try{
-        const deportista = new Deportista({
+            const deportista = new Deportista({
             name:name,
             last_name:last_name,
             sports:sports,
@@ -32,6 +32,23 @@ deportistaController.findAll= async(req,res,next)=>{
         const deportista = await Deportista.findAll({hidden:false});
         
         return res.status(200).json({equipo});
+    }catch(e){
+        console.error(e);
+        return res.status(500).json({error:"Error interno servidor"});
+    }
+}
+
+deportistaController.finOneById= async(req,res,next)=>{
+    try{
+       const{identifier} = req.params;
+
+       const deportista = await Deportista.findById(identifier);
+        
+       if(!deportista){
+          return res.status(404).json({error:"Ejercicio no definido"});
+       }
+
+        return res.status(200).json(deportista);
     }catch(e){
         console.error(e);
         return res.status(500).json({error:"Error interno servidor"});
