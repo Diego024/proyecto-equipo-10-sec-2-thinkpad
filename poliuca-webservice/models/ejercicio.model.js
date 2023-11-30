@@ -1,7 +1,7 @@
-const Moongose = require("mongoose");
-const Scheme = Moongose.Schema;
+const {Schema,model} = require("mongoose");
 
-const EjercicioSchema = new Scheme({
+
+const EjercicioSchema = new Schema({
 name:{
     type:String,
     trim:true,
@@ -25,6 +25,6 @@ hidden:{
     type:Boolean,
     default:false
 }
-},{timiestamps:true});
+},{timestamps:true});
 
-module.export = Moongose.model("Ejercicio",EjercicioSchema);
+module.exports = model("Ejercicio",EjercicioSchema);

@@ -26,6 +26,6 @@ hidden:{
     type:Boolean,
     default:false
 }
-},{timiestamps:true});
+},{timestamps:true});
 
-module.export = Moongose.model("Evento",EventoSchema);
+module.exports = Moongose.model("Evento",EventoSchema);

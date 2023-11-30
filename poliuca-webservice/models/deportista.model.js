@@ -1,7 +1,7 @@
 const Moongose = require("mongoose");
 const Scheme = Moongose.Schema;
 
-const SportSchema = new Scheme({name:{type:Number}});
+const SportSchema = new Scheme({name:{type:String}});
 
 
 const DeportistaSchema = new Scheme({
@@ -35,6 +35,6 @@ hidden:{
     type:Boolean,
     default:false,
 }
-},{timiestamps:true});
+},{timestamps:true});
 
-module.export = Moongose.model("Deportista",DeportistaSchema);
+module.exports = Moongose.model("Deportista",DeportistaSchema);
