@@ -218,11 +218,7 @@ function Ejercicios() {
           name={"date"}
         />
 
-        <Input
-          label={"Opciones de Checkbox"}
-          type={"checkbox"}
-          name={"checkboxOptions"}
-        >
+        <Input label={"Tipo"} type={"checkbox"} name={"checkboxOptions"}>
           <label>
             <input type="checkbox" name="individual" />
             Individual
