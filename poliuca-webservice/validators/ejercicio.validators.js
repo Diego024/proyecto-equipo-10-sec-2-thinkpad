@@ -23,7 +23,7 @@ ejercicioValidator.ejercicioIdParamsValidator=[
     param("identifier")
     .notEmpty().withMessage("Indentifier required")
     .isMongoId().withMessage("Identifier must be Mongo Id")
-]
+];
 
 
 
