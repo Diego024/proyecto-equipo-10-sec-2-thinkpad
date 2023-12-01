@@ -19,6 +19,7 @@ deportistaController.create= async(req,res,next)=>{
      if(!deportistaSaved){
         return res.status(409).json({error:"Error al crear"});
      }
+     res.status(201).json({message: "Deportista creado",data:deportistaSaved})
     }catch(e){
         console.error(e);
         return res.status(500).json({error:"Error interno servidor"});
@@ -29,9 +30,9 @@ deportistaController.create= async(req,res,next)=>{
 deportistaController.findAll= async(req,res,next)=>{
     try{
        
-        const deportista = await Deportista.findAll({hidden:false});
+        const deportista = await Deportista.find({hidden:false});
         
-        return res.status(200).json({equipo});
+        return res.status(200).json({deportista});
     }catch(e){
         console.error(e);
         return res.status(500).json({error:"Error interno servidor"});

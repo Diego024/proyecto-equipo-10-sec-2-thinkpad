@@ -16,6 +16,7 @@ rutinaController.create=async(req,res,next)=>{
      if(!rutinaSaved){
         return res.status(409).json({error:"Error al crear"});
      }
+     res.status(201).json({message: "Rutina creado",data:rutinaSaved});
     }catch(e){
         console.error(e);
         return res.status(500).json({error:"Error interno servidor"});

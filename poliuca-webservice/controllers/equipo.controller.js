@@ -17,6 +17,7 @@ equipoController.create= async(req,res,next)=>{
      if(!equipoSaved){
         return res.status(409).json({error:"Error al crear"});
      }
+     res.status(201).json({message: "Equipo creado",data:equipoSaved})
     }catch(e){
         console.error(e);
         return res.status(500).json({error:"Error interno servidor"});
@@ -26,7 +27,7 @@ equipoController.create= async(req,res,next)=>{
 equipoController.findAll= async(req,res,next)=>{
     try{
        
-        const equipo = await  Equipo.findAll({hidden:false});
+        const equipo = await  Equipo.find({hidden:false});
         
         return res.status(200).json({equipo});
     }catch(e){
