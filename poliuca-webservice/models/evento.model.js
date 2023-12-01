@@ -2,7 +2,7 @@ const Moongose = require("mongoose");
 const Scheme = Moongose.Schema;
 
 const EventoSchema = new Scheme({
-tile:{
+title:{
     type:String,
     trim:true,
     required:true
@@ -19,7 +19,7 @@ hour:{
     type:String,
     trim:true
 },
-date:{
+date_event:{
     type:Date,
     required:true
 },

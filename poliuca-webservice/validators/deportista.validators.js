@@ -2,8 +2,10 @@ const{body,param} = require('express-validator');
 
 const deportistaValidator={};
 
-deportistaValidator.createDeportistaalidator=[
-
+deportistaValidator.createDeportistaValidator=[
+    param("identifier")
+     .optional()
+     .isMongoId().withMessage("Identifier must be a Mongo id"),
     body("name")
          .notEmpty().withMessage("Nombre requerido"),
     body("last_name")

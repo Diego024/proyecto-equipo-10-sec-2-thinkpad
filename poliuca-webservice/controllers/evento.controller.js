@@ -1,10 +1,11 @@
 
 const Evento = require("../models/evento.model");
+const httpError = require("http-errors");
 
 const eventoController = {};
 
 eventoController.create=async(req,res,next)=>{
-  try{const{title,type_event,place,hour,date} = req.body;
+  try{const{title,type_event,place,hour,date_event} = req.body;
    
   const {identifier} = req.params;
 
@@ -18,7 +19,7 @@ eventoController.create=async(req,res,next)=>{
          evento["type_event"]=type_event;
          evento["place"]=place;
          evento["hour"]=hour;
-         evento["date"]=date;
+         evento["date_event"]=date_event;
         
 
      const eventoSaved =  await evento.save();
@@ -78,5 +79,21 @@ eventoController.deleteById = async (req,res,next)=>{
     }
 }
 
+eventoController.updateEquip = async (req,res,next)=>{
+    try {
+        const{identifier} = req.params;
+        const{body} = req;
+        const toUpdateEvento = await Evento.findById(identifier);
+        if(!toUpdateEvento)throw httpError(404,"Equipo not found");
+        const  updateEvento = await Evento.findByIdAndUpdate(identifier,body,{
+            new:true,
+        })
+        if(!updateEvento)throw httpError(500,"Equipo no actualizado");
+        res.status(200).json({message:"Equipo actualizado",data:updateEvento});
+    } catch(e){
+        console.error(e);
+        return res.status(500).json({error:"Error interno servidor"});
+    }
+}
 
 module.exports = eventoController;

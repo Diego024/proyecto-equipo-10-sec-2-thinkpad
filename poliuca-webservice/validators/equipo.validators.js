@@ -7,9 +7,9 @@ equipoValidator.createEquipoValidator =[
      .isMongoId().withMessage("Identifier must be a Mongo id"),
    body("name")
      .notEmpty().withMessage("Nombre requerido"),
-   body("create_date")
-     .notEmpty().withMessage("fecha requerida"),
-  /* body("players")
+  /* body("create_date")
+     .notEmpty().withMessage("fecha requerida")
+  body("players")
      .notEmpty().withMessage("cantidad jugadores requerido"),
    body("sport")
      .notEmpty().withMessage("Deporte requerido"),

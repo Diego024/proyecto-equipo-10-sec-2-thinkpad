@@ -2,7 +2,7 @@ const{body,param} = require('express-validator');
 
 const rutinaValidator = {};
 
-rutinaValidator.createrutinaValidator =[
+rutinaValidator.createRutinaValidator =[
    param("identifier")
      .optional()
      .isMongoId().withMessage("Identifier must be a Mongo id"),

@@ -78,5 +78,22 @@ ejercicioController.deleteById = async (req,res,next)=>{
     }
 }
 
+ejercicioController.updateEquip = async (req,res,next)=>{
+    try {
+        const{identifier} = req.params;
+        const{body} = req;
+        const toUpdateEjercicio = await Ejercicio.findById(identifier);
+        if(!toUpdateEjercicio)throw httpError(404,"Equipo not found");
+        const  updateEjercicio = await Ejercicio.findByIdAndUpdate(identifier,body,{
+            new:true,
+        })
+        if(!updateEjercicio)throw httpError(500,"Equipo no actualizado");
+        res.status(200).json({message:"Equipo actualizado",data:updateEjercicio});
+    } catch(e){
+        console.error(e);
+        return res.status(500).json({error:"Error interno servidor"});
+    }
+}
+
 
 module.exports = ejercicioController;
