@@ -1,4 +1,4 @@
-import "../../css/ejercicios.scss";
+import "./../../css/ejercicios.scss";
 import Reloj from "../icons/Reloj.jsx";
 import Maps from "../icons/Maps.jsx";
 import Header from "../layout/Header.jsx";

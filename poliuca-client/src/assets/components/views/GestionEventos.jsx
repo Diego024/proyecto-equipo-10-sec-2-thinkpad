@@ -1,4 +1,4 @@
-import "../../css/gestioneventos.scss";
+import "./../../css/gestioneventos.scss";
 import Logo from "../icons/Logo.jsx";
 import Reloj from "../icons/Reloj.jsx";
 import Maps from "../icons/Maps.jsx";

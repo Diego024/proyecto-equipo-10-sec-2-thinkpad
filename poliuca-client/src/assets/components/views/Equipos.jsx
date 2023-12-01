@@ -1,4 +1,4 @@
-import "../../css/equipos.scss";
+import "./../../css/equipos.scss";
 import Logo from "../icons/Logo.jsx";
 
 function Equipos() {

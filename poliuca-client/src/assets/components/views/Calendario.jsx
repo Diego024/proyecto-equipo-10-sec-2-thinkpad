@@ -1,4 +1,4 @@
-import "../../css/calendario.scss";
+import "./../../css/calendario.scss";
 import Logo from "../icons/Logo.jsx";
 import Header from "../layout/Header.jsx";
 

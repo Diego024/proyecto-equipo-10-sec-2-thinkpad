@@ -9,23 +9,25 @@ import Equipos from "./assets/components/views/Equipos";
 import Entrenamientos from "./assets/components/views/Entrenamientos";
 import Ejercicios from "./assets/components/views/Ejercicios";
 import GestionEventos from "./assets/components/views/GestionEventos";
+import { GoogleOAuthProvider } from "@react-oauth/google";
 
 function App() {
   return (
     <>
-      <BrowserRouter>
-        <Routes>
-          <Route path="/" element={<LogIn />} />
-          <Route path="/login" element={<LogIn />} />
-          <Route path="/calendario" element={<Calendario />} />
-          <Route path="/eventos" element={<Eventos />} />
-          <Route path="/deportistas" element={<Deportistas />} />
-          <Route path="/equipos" element={<Equipos />} />
-          <Route path="/entrenamientos" element={<Entrenamientos />} />
-          <Route path="/ejercicios" element={<Ejercicios />} />
-          <Route path="/gestioneventos" element={<GestionEventos />} />
-        </Routes>
-      </BrowserRouter>
+      <GoogleOAuthProvider clientId="704212167289-a665eo8fj4n2f73sip2s75b8uvtfqm8s.apps.googleusercontent.com">
+        <BrowserRouter>
+          <Routes>
+            <Route path="/" element={<LogIn />} />
+            <Route path="/calendario" element={<Calendario />} />
+            <Route path="/eventos" element={<Eventos />} />
+            <Route path="/deportistas" element={<Deportistas />} />
+            <Route path="/equipos" element={<Equipos />} />
+            <Route path="/entrenamientos" element={<Entrenamientos />} />
+            <Route path="/ejercicios" element={<Ejercicios />} />
+            <Route path="/gestioneventos" element={<GestionEventos />} />
+          </Routes>
+        </BrowserRouter>
+      </GoogleOAuthProvider>
     </>
   );
 }

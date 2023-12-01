@@ -1,5 +1,5 @@
 import { useState } from "react";
-import "../../css/deportistas.scss";
+import "./../../css/deportistas.scss";
 import Dialog from "../layout/Dialog.jsx";
 import Input from "../layout/Input.jsx";
 import Header from "../layout/Header.jsx";

@@ -17,7 +17,7 @@ const Header = () => {
   return (
     <>
       <header className="nav">
-        <label className="menu-icon_container" for="click">
+        <label className="menu-icon_container" htmlFor="click">
           <figure>
             <img className="menu-icon" src={MenuIcon} alt="Open menu icon" />
           </figure>
@@ -79,7 +79,11 @@ const Header = () => {
           <NavItem
             title={"Cerrar Sesión"}
             icon={LogOutIcon}
+<<<<<<< HEAD
+            url={"/"}
+=======
             url={"/login"}
+>>>>>>> 35e9fc30081d7bcd6b7e6b0bc57fe9c77ca4547c
             alt={"Log out icon"}
           />
 
