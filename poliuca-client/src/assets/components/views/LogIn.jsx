@@ -1,6 +1,6 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
-import "../../css/LogIn.scss";
+import "./../../css/Login.scss";
 import Logo from "./../../img/svg/Logo.svg";
 import GoogleIcon from "./../../img/svg/google-icon.svg";
 

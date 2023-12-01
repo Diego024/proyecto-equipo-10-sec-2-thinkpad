@@ -5,7 +5,7 @@ import Dialog from "../layout/Dialog.jsx";
 import Input from "../layout/Input.jsx";
 
 function Deportistas() {
-  const [dialogOpen, setDialogOpen] = useState(true);
+  const [dialogOpen, setDialogOpen] = useState(false);
 
   const handleOpenDialog = () => {
     setDialogOpen(true);
