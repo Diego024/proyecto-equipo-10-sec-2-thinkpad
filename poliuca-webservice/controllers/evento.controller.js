@@ -18,6 +18,7 @@ eventoController.create=async(req,res,next)=>{
      if(!eventoSaved){
         return res.status(409).json({error:"Error al crear"});
      }
+     res.status(201).json({message: "Evento creado",data:eventoSaved})
     }catch(e){
         console.error(e);
         return res.status(500).json({error:"Error interno servidor"});
@@ -29,7 +30,7 @@ eventoController.create=async(req,res,next)=>{
 eventoController.findAll= async(req,res,next)=>{
     try{
        
-        const evento = await  Evento.findAll({hidden:false});
+        const evento = await  Evento.find({hidden:false});
         
         return res.status(200).json({evento});
     }catch(e){
