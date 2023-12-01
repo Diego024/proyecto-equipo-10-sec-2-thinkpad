@@ -2,19 +2,12 @@ import "../../css/gestioneventos.scss";
 import Logo from "../icons/Logo.jsx";
 import Reloj from "../icons/Reloj.jsx";
 import Maps from "../icons/Maps.jsx";
+import Header from "../layout/Header.jsx";
 
 function GestionEventos() {
   return (
     <>
-      <header>
-        <img
-          className="menu-image"
-          src="../../src/assets/img/open-menu.png"
-          alt="MENU"
-        />
-
-        <Logo />
-      </header>
+      <Header />
 
       <section className="cards body-div">
         <h1 className="page-title">Gestion de Eventos</h1>
