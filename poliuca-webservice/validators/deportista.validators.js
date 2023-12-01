@@ -10,12 +10,12 @@ deportistaValidator.createDeportistaValidator=[
          .notEmpty().withMessage("Nombre requerido"),
     body("last_name")
          .notEmpty().withMessage("Apellido requerido"),
-    body("birth_date")
+  /*  body("birth_date")
          .notEmpty().withMessage("Cumpleaños requerido, año-mes-dia"),
     body("height")
         .notEmpty().withMessage("Altura requerido"),
     body("weight")
-        .notEmpty().withMessage("Peso requerido"),
+        .notEmpty().withMessage("Peso requerido"),*/
     body("email")
         .notEmpty().withMessage("Correo requerido")
 ];
