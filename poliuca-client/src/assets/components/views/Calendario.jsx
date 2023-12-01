@@ -1,17 +1,12 @@
 import "../../css/calendario.scss";
 import Logo from "../icons/Logo.jsx";
+import Header from "../layout/Header.jsx";
 
 function Calendario() {
   return (
     <>
-      <header>
-        <img
-          className="menu-image"
-          src="/../../src/assets/img/icon/open-menu.png"
-          alt="MENU"
-        />
-        <Logo />
-      </header>
+      <Header />
+
       <section className="cards body-div">
         <h1 className="page-title">Mi Calendario</h1>
 
