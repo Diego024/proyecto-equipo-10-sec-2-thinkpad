@@ -1,5 +1,5 @@
 const{validationResult} = require('express-validator');
-const { param } = require('../routes/ejercicio.router');
+
 
 
 module.exports =(req,res,next)=>{
