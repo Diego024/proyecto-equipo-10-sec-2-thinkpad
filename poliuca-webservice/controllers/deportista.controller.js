@@ -1,19 +1,25 @@
 const Deportista = require("../models/deportista.model");
+const httpError = require("http-errors");
 
 const deportistaController={};
 
 deportistaController.create= async(req,res,next)=>{
-    const{name,last_name,sports,birth_date,height,weight,email} = req.body;
-    try{
-            const deportista = new Deportista({
-            name:name,
-            last_name:last_name,
-            sports:sports,
-            birth_date:birth_date,
-            height:height,
-            weight:weight,
-            email:email,
-        });
+      try{const{name,last_name,sports,birth_date,height,weight,email} = req.body;
+  
+      const{identifier}= req.params;
+      let deportista= await Deportista.findById(identifier);
+      if(!deportista){
+        deportista = new Deportista();
+      }
+            
+      deportista["name"]=name;
+      deportista["last_name"]=last_name;
+      deportista["sports"]=sports;
+      deportista["birth_date"]=birth_date;
+      deportista["height"]=height;
+      deportista["weight"]=weight;
+      deportista["email"]=email;
+       
 
      const deportistaSaved =  await deportista.save();
      if(!deportistaSaved){
@@ -56,5 +62,36 @@ deportistaController.finOneById= async(req,res,next)=>{
     }
 }
 
+deportistaController.deleteById = async (req,res,next)=>{
+    try{
+           const {identifier} = req.params;
+
+           const deportista = await Deportista.findByIdAndDelete(identifier);
+           if(!deportista){
+            return res.status(404).json({error:"Deportista not found"});
+           }
+           return res.status(200).json({message:"Deportista eliminado"})
+    }catch(e){
+        console.error(e);
+        return res.status(500).json({error:"Error interno servidor"});
+    }
+}
+
+deportistaController.updateEquip = async (req,res,next)=>{
+    try {
+        const{identifier} = req.params;
+        const{body} = req;
+        const toUpdateDeportista = await Deportista.findById(identifier);
+        if(!toUpdateDeportista)throw httpError(404,"Equipo not found");
+        const  updateDeportista = await Deportista.findByIdAndUpdate(identifier,body,{
+            new:true,
+        })
+        if(!updateDeportista)throw httpError(500,"Equipo no actualizado");
+        res.status(200).json({message:"Equipo actualizado",data:updateDeportista});
+    } catch(e){
+        console.error(e);
+        return res.status(500).json({error:"Error interno servidor"});
+    }
+}
 
 module.exports = deportistaController;

@@ -18,15 +18,15 @@ last_name:{
 sports:[SportSchema],
 birth_date:{
     type:Date,
-    required:true
+    //required:true
 },
 height:{
     type: Number,
-    required:true
+    //required:true
 },
 weight:{
     type: Number,
-    required:true,
+    //required:true,
 },
 email:{
     type:String

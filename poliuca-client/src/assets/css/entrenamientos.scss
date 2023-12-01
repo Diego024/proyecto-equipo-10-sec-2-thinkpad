@@ -127,27 +127,6 @@
     }
   }
 
-  header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 0.725rem; /* Ajusta el espacio entre los elementos según sea necesario */
-
-    .menu-image {
-      width: 1rem; /* Ajusta el ancho según sea necesario */
-      &:hover {
-        cursor: pointer;
-      }
-    }
-
-    .logo-image {
-      width: 4rem; /* Ajusta el ancho según sea necesario */
-      margin: 0 auto; /* Centra el elemento horizontalmente */
-      position: relative;
-      left: 0.725rem;
-    }
-  }
-
   .page-title {
     margin: 1rem;
     margin-bottom: 2rem;

@@ -1,5 +1,5 @@
 import { useState } from "react";
-import "../../css/entrenamientos.scss";
+import "./../../css/entrenamientos.scss";
 import Logo from "../icons/Logo.jsx";
 import Dialog from "../layout/Dialog.jsx";
 import Input from "../layout/Input.jsx";

@@ -1,8 +1,8 @@
 import { useState } from "react";
-import "../../css/gestioneventos.scss";
-import Logo from "../icons/Logo.jsx";
+import "./../../css/gestioneventos.scss";
 import Reloj from "../icons/Reloj.jsx";
 import Maps from "../icons/Maps.jsx";
+import Header from "../layout/Header.jsx";
 import Dialog from "../layout/Dialog.jsx";
 import Input from "../layout/Input.jsx";
 
@@ -22,15 +22,7 @@ function GestionEventos() {
   };
   return (
     <>
-      <header>
-        <img
-          className="menu-image"
-          src="../../src/assets/img/open-menu.png"
-          alt="MENU"
-        />
-
-        <Logo />
-      </header>
+      <Header />
 
       <section className="cards body-div">
         <h1 className="page-title">Gestion de Eventos</h1>

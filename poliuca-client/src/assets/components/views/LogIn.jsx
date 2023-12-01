@@ -2,7 +2,7 @@ import React from "react";
 import { useNavigate } from "react-router-dom";
 import "./../../css/Login.scss";
 import Logo from "./../../img/svg/Logo.svg";
-import GoogleIcon from "./../../img/svg/google-icon.svg";
+import GoogleLogInButton from "../layout/GoogleLogin";
 
 const LogIn = (props) => {
   const navigate = useNavigate();
@@ -20,14 +20,9 @@ const LogIn = (props) => {
         <h1 className="title">¡Bienvenido!</h1>
         <section className="form-container">
           <p>Ingresa tu información</p>
-          <div className="google-btn_container">
-            <button type="button" className="google-btn">
-              <figure className="google-icon">
-                <img src={GoogleIcon} alt="GoogleIcon" />
-              </figure>
-              Usa tu cuenta UCA
-            </button>
-          </div>
+
+          <GoogleLogInButton />
+
           <div className="login-separator" />
           <form>
             <input

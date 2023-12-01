@@ -2,10 +2,6 @@ const Moongose = require("mongoose");
 const Scheme = Moongose.Schema;
 
 const EquipoSchema = new Scheme({
-id:{
-    type:Number,
-    required:true
-},
 name:{ 
     type: String,
     trim:true,
@@ -14,7 +10,6 @@ name:{
 create_date:{
     type: Date,
     default: Date.now,
-    required:true
 },
 players:{
     type: Number,

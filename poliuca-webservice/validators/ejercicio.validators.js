@@ -1,9 +1,12 @@
-const{body} = require('express-validator');
-const { param } = require('../routes/ejercicio.router');
+const{body,param} = require('express-validator');
+//const { param } = require('../routes/ejercicio.router');
 
 const ejercicioValidator = {};
 
 ejercicioValidator.createEjercicioValidator =[
+   param("identifier")
+     .optional()
+     .isMongoId().withMessage("Identifier must be a Mongo id"),
    body("name")
      .notEmpty().withMessage("Nombre requerido"),
    body("grupo_muscular")
@@ -16,12 +19,12 @@ ejercicioValidator.createEjercicioValidator =[
 ];
 
 
-Validators.ejercicioIdParamsValidator=[
+ejercicioValidator.ejercicioIdParamsValidator=[
     param("identifier")
     .notEmpty().withMessage("Indentifier required")
     .isMongoId().withMessage("Identifier must be Mongo Id")
-]
+];
 
 
 
-module.export = ejercicioValidator;
+module.exports = ejercicioValidator;
