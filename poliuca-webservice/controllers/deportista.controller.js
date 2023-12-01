@@ -77,4 +77,21 @@ deportistaController.deleteById = async (req,res,next)=>{
     }
 }
 
+deportistaController.updateEquip = async (req,res,next)=>{
+    try {
+        const{identifier} = req.params;
+        const{body} = req;
+        const toUpdateDeportista = await Deportista.findById(identifier);
+        if(!toUpdateDeportista)throw httpError(404,"Equipo not found");
+        const  updateDeportista = await Deportista.findByIdAndUpdate(identifier,body,{
+            new:true,
+        })
+        if(!updateDeportista)throw httpError(500,"Equipo no actualizado");
+        res.status(200).json({message:"Equipo actualizado",data:updateDeportista});
+    } catch(e){
+        console.error(e);
+        return res.status(500).json({error:"Error interno servidor"});
+    }
+}
+
 module.exports = deportistaController;

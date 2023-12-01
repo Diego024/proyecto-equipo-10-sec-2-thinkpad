@@ -1,4 +1,5 @@
 const Equipo = require("../models/equipo.model");
+const httpError = require("http-errors");
 
 const equipoController={};
 
@@ -12,10 +13,8 @@ equipoController.create= async(req,res,next)=>{
         equipo= new Equipo();
     }
 
-    
-                  
     equipo["name"] =name;
-    equipo["create_date"] =create_date;
+    equipo["create_date"] = create_date;
     equipo["players"] =players;
     equipo["sport"] =sport;
        
@@ -64,12 +63,29 @@ equipoController.deleteById = async (req,res,next)=>{
     try{
            const {identifier} = req.params;
 
-           const equipo = await Ejercicio.findByIdAndDelete(identifier);
+           const equipo = await Equipo.findByIdAndDelete(identifier);
            if(!equipo){
             return res.status(404).json({error:"Equipo not found"});
            }
            return res.status(200).json({message:"Equipo eliminado"})
     }catch(e){
+        console.error(e);
+        return res.status(500).json({error:"Error interno servidor"});
+    }
+}
+
+equipoController.updateEquip = async (req,res,next)=>{
+    try {
+        const{identifier} = req.params;
+        const{body} = req;
+        const toUpdateEquipo = await Equipo.findById(identifier);
+        if(!toUpdateEquipo)throw httpError(404,"Equipo not found");
+        const  updateEquipo = await Equipo.findByIdAndUpdate(identifier,body,{
+            new:true,
+        })
+        if(!updateEquipo)throw httpError(500,"Equipo no actualizado");
+        res.status(200).json({message:"Equipo actualizado",data:updateEquipo});
+    } catch(e){
         console.error(e);
         return res.status(500).json({error:"Error interno servidor"});
     }

@@ -10,8 +10,8 @@ eventoValidator.createEventoValidator =[
      .notEmpty().withMessage("Nombre evento  requerido"),
    body("type_event")
      .notEmpty().withMessage("Tipo de evento es requerido"),
-   body("date")
-     .isDate().withMessage("See requiere formato año-mes-dia")
+   body("date_event")
+   .isISO8601('yyyy-mm-dd').withMessage("See requiere formato año-mes-dia")
 ];
 
 

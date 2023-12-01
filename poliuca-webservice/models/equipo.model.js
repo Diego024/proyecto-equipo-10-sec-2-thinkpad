@@ -10,7 +10,6 @@ name:{
 create_date:{
     type: Date,
     default: Date.now,
-    required:true
 },
 players:{
     type: Number,

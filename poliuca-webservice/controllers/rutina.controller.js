@@ -1,5 +1,5 @@
 const Rutina = require("../models/rutina.model");
-
+const httpError = require("http-errors");
 const rutinaController ={};
 
 rutinaController.create=async(req,res,next)=>{
@@ -35,7 +35,7 @@ rutinaController.create=async(req,res,next)=>{
 rutinaController.findAll= async(req,res,next)=>{
     try{
        
-        const rutina = await  Rutina.findAll({hidden:false});
+        const rutina = await  Rutina.find({hidden:false});
         
         return res.status(200).json({rutina});
     }catch(e){
@@ -75,4 +75,22 @@ rutinaController.deleteById = async (req,res,next)=>{
         return res.status(500).json({error:"Error interno servidor"});
     }
 }
+
+rutinaController.updateEquip = async (req,res,next)=>{
+    try {
+        const{identifier} = req.params;
+        const{body} = req;
+        const toUpdateRutina = await Rutina.findById(identifier);
+        if(!toUpdateRutina)throw httpError(404,"Equipo not found");
+        const  updateRutina = await Rutina.findByIdAndUpdate(identifier,body,{
+            new:true,
+        })
+        if(!updateRutina)throw httpError(500,"Equipo no actualizado");
+        res.status(200).json({message:"Equipo actualizado",data:updateRutina});
+    } catch(e){
+        console.error(e);
+        return res.status(500).json({error:"Error interno servidor"});
+    }
+}
+
 module.exports = rutinaController;
