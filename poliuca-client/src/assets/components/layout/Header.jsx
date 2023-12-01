@@ -17,7 +17,7 @@ const Header = () => {
   return (
     <>
       <header className="nav">
-        <label className="menu-icon_container" for="click">
+        <label className="menu-icon_container" htmlFor="click">
           <figure>
             <img className="menu-icon" src={MenuIcon} alt="Open menu icon" />
           </figure>
