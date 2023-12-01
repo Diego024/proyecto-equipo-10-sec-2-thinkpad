@@ -27,6 +27,6 @@ hidden:{
     type:Boolean,
     default:false
 }
-},{timiestamps:true});
+},{timestamps:true});
 
-module.export = Moongose.model("Equipo",EquipoSchema);
+module.exports = Moongose.model("Equipo",EquipoSchema);

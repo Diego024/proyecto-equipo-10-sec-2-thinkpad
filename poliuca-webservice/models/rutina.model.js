@@ -24,6 +24,6 @@ hidden:{
     type:Boolean,
     default:false
 }
-},{timiestamps:true});
+},{timestamps:true});
 
-module.export = Moongose.model("Rutina",RutinaSchema);
+module.exports = Moongose.model("Rutina",RutinaSchema);
