@@ -17,6 +17,14 @@ body {
 
 .cards {
   font-family: "Cabin", sans-serif;
+  .btn-nuevo-evento {
+    display: block;
+    text-align: right;
+    cursor: pointer;
+    text-decoration: underline;
+    font-size: 12px;
+    margin-right: 1.5rem;
+  }
 
   .card {
     width: auto;

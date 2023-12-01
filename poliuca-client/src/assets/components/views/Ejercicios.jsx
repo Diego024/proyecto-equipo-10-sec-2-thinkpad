@@ -1,9 +1,25 @@
+import { useState } from "react";
 import "./../../css/ejercicios.scss";
+import Header from "../layout/Header.jsx";
 import Reloj from "../icons/Reloj.jsx";
 import Maps from "../icons/Maps.jsx";
-import Header from "../layout/Header.jsx";
+import Dialog from "../layout/Dialog.jsx";
+import Input from "../layout/Input.jsx";
 
 function Ejercicios() {
+  const [dialogOpen, setDialogOpen] = useState(false);
+
+  const handleOpenDialog = () => {
+    setDialogOpen(true);
+  };
+
+  const handleCloseDialog = () => {
+    setDialogOpen(false);
+  };
+
+  const handleSubmit = () => {
+    alert("Buenos días, mis estimados");
+  };
   return (
     <>
       <Header />
@@ -11,9 +27,12 @@ function Ejercicios() {
       <section className="cards body-div">
         <h1 className="page-title">Gestion de entrenamientos</h1>
         <div className="container-opciones2">
-          <div className="ejercicios">Ejercicios</div>
-          <div className="rutinas select">Rutinas</div>
+          <div className="ejercicios select">Ejercicios</div>
+          <div className="rutinas ">Rutinas</div>
         </div>
+        <a className="btn-nuevo-ejercicio" onClick={handleOpenDialog}>
+          Agregar nuevo ejercicio
+        </a>
 
         <article className="card abdomen">
           <div className="parteCuerpo-container">
@@ -160,6 +179,62 @@ function Ejercicios() {
           </div>
         </article>
       </section>
+      <Dialog
+        title={"Registro de entrenamientos"}
+        open={dialogOpen}
+        onClose={handleCloseDialog}
+        handleSubmit={handleSubmit}
+      >
+        <Input
+          label={"Nombre del entrenamiento"}
+          placeholder={"Ingresa el nombre del entrenamiento"}
+          type={"text"}
+          name={"name"}
+        />
+
+        <Input
+          label={"Disciplina"}
+          type={"select"}
+          name={"sport"}
+          placeholder={"Seleccione la disciplina"}
+        >
+          <option value="Volleyball">Volleyball</option>
+          <option value="Soccer">Futbol</option>
+          <option value="Basketball">Baloncesto</option>
+          <option value="run">Atletismo</option>
+        </Input>
+
+        <Input
+          label={"Fecha del entreno"}
+          placeholder={"Ingrese la fecha del entreno"}
+          type={"date"}
+          name={"date"}
+        />
+
+        <Input label={"Tipo"} type={"checkbox"} name={"checkboxOptions"}>
+          <label>
+            <input type="checkbox" name="individual" />
+            Individual
+          </label>
+          <label>
+            <input type="checkbox" name="grupal" />
+            Grupal
+          </label>
+        </Input>
+
+        <Input
+          label={"Ejercicios a realizar"}
+          placeholder={"Seleccione los ejercicios"}
+          type={"select"}
+          name={"exercises"}
+        >
+          <option value="press">Press</option>
+          <option value="remo">Remo</option>
+          <option value="squat">Squat</option>
+          <option value="curl">Curl</option>
+          <option value="cardio">Cardio</option>
+        </Input>
+      </Dialog>
     </>
   );
 }

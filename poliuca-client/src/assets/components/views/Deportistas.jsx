@@ -170,6 +170,26 @@ function Deportistas() {
           type={"date"}
           name={"birthdate"}
         />
+        <Input label={"Disciplinas"} type={"checkbox"} name={"checkboxOptions"}>
+          <label>
+            <input type="checkbox" name="volley" />
+            Volleyball
+          </label>
+          <label>
+            <input type="checkbox" name="basket" />
+            Basketball
+          </label>
+
+          <label>
+            <input type="checkbox" name="futbol" />
+            Futbol
+          </label>
+
+          <label>
+            <input type="checkbox" name="futsal" />
+            Futbol Sala
+          </label>
+        </Input>
       </Dialog>
     </>
   );

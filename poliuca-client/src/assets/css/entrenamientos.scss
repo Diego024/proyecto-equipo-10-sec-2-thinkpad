@@ -1,25 +1,16 @@
-.card {
-  &.bkb {
-    border: 1px solid #fd6a1f;
+.cards {
+  .exercise {
+    display: block;
+    text-align: right;
+    cursor: pointer;
+    text-decoration: underline;
+    font-size: 12px;
+    margin-right: 1.5rem;
   }
-  &.fut {
-    border: 1px solid #132a87;
-  }
-  &.vol {
-    border: 1px solid #c91d92;
-  }
-  &.atletismo {
-    border: 1px solid #d4af00;
-  }
-  .ball-container {
-    margin: 1rem;
-    border: 1px solid black;
-    border-radius: 1rem;
-    padding: 0.3rem;
+  .card {
     &.bkb {
       border: 1px solid #fd6a1f;
     }
-
     &.fut {
       border: 1px solid #132a87;
     }
@@ -29,63 +20,82 @@
     &.atletismo {
       border: 1px solid #d4af00;
     }
-  }
+    .ball-container {
+      margin: 1rem;
+      border: 1px solid black;
+      border-radius: 1rem;
+      padding: 0.3rem;
+      &.bkb {
+        border: 1px solid #fd6a1f;
+      }
 
-  .deporte-container {
-    display: flex;
-    flex-direction: column;
-
-    p {
-      font-size: 8.5px;
+      &.fut {
+        border: 1px solid #132a87;
+      }
+      &.vol {
+        border: 1px solid #c91d92;
+      }
+      &.atletismo {
+        border: 1px solid #d4af00;
+      }
     }
 
-    .seleccion {
-      margin-top: 0.1rem;
+    .deporte-container {
+      display: flex;
+      flex-direction: column;
+
       p {
-        font-size: 11px;
+        font-size: 8.5px;
       }
-    }
-    .fecha-creacion {
-      display: flex;
-      gap: 0.2rem;
 
-      .bkb {
-        color: #fd6a1f;
-      }
-      .fut {
-        color: #132a87;
-      }
-      .vol {
-        color: #c91d92;
-      }
-      .atletismo {
-        color: #d4af00;
-      }
-    }
-    .numero-jugadores {
-      display: flex;
-      gap: 0.72rem;
-
-      margin-bottom: 0.4rem;
-      .basketball {
+      .seleccion {
+        margin-top: 0.1rem;
         p {
+          font-size: 11px;
+        }
+      }
+      .fecha-creacion {
+        display: flex;
+        gap: 0.2rem;
+
+        .bkb {
           color: #fd6a1f;
         }
-      }
-      .volleyball {
-        p {
-          color: #c91d92;
-        }
-      }
-
-      .futbol {
-        p {
+        .fut {
           color: #132a87;
         }
+        .vol {
+          color: #c91d92;
+        }
+        .atletismo {
+          color: #d4af00;
+        }
       }
+      .numero-jugadores {
+        display: flex;
+        gap: 0.72rem;
 
-      .run {
-        color: #d4af00;
+        margin-bottom: 0.4rem;
+        .basketball {
+          p {
+            color: #fd6a1f;
+          }
+        }
+        .volleyball {
+          p {
+            color: #c91d92;
+          }
+        }
+
+        .futbol {
+          p {
+            color: #132a87;
+          }
+        }
+
+        .run {
+          color: #d4af00;
+        }
       }
     }
   }

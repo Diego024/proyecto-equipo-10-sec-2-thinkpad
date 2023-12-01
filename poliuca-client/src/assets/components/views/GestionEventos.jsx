@@ -1,17 +1,34 @@
+import { useState } from "react";
 import "./../../css/gestioneventos.scss";
-import Logo from "../icons/Logo.jsx";
 import Reloj from "../icons/Reloj.jsx";
 import Maps from "../icons/Maps.jsx";
 import Header from "../layout/Header.jsx";
+import Dialog from "../layout/Dialog.jsx";
+import Input from "../layout/Input.jsx";
 
 function GestionEventos() {
+  const [dialogOpen, setDialogOpen] = useState(false);
+
+  const handleOpenDialog = () => {
+    setDialogOpen(true);
+  };
+
+  const handleCloseDialog = () => {
+    setDialogOpen(false);
+  };
+
+  const handleSubmit = () => {
+    alert("Buenos días, mis estimados");
+  };
   return (
     <>
       <Header />
 
       <section className="cards body-div">
         <h1 className="page-title">Gestion de Eventos</h1>
-
+        <a className="btn-nuevo-evento" onClick={handleOpenDialog}>
+          Agregar nuevo evento
+        </a>
         <article className="card volibol">
           <div className="date-line-eventos">
             <p className="date-eventos">25/11/2023</p>
@@ -115,6 +132,47 @@ function GestionEventos() {
           </div>
         </article>
       </section>
+      <Dialog
+        title={"Registro de entrenamientos"}
+        open={dialogOpen}
+        onClose={handleCloseDialog}
+        handleSubmit={handleSubmit}
+      >
+        <Input
+          label={"Titulo del evento"}
+          placeholder={"Ingresa el titulo del evento"}
+          type={"text"}
+          name={"name"}
+        />
+
+        <Input
+          label={"Tipo de evento"}
+          type={"text"}
+          name={"type"}
+          placeholder={"Ingrese el tipo de evento"}
+        />
+
+        <Input
+          label={"Lugar del evento"}
+          placeholder={"Ingrese el lugar del evento "}
+          type={"text"}
+          name={"place"}
+        />
+
+        <Input
+          label={"Hora del evento"}
+          type={"time"}
+          name={"hora"}
+          placeholder={"Hora del evento"}
+        />
+
+        <Input
+          label={"Fecha del evento"}
+          placeholder={"Ingrese fecha del evento"}
+          type={"date"}
+          name={"fecha"}
+        />
+      </Dialog>
     </>
   );
 }

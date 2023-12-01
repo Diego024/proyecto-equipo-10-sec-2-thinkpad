@@ -1,7 +1,23 @@
+import { useState } from "react";
 import "./../../css/entrenamientos.scss";
 import Logo from "../icons/Logo.jsx";
+import Dialog from "../layout/Dialog.jsx";
+import Input from "../layout/Input.jsx";
 
 function Entrenamientos() {
+  const [dialogOpen, setDialogOpen] = useState(false);
+
+  const handleOpenDialog = () => {
+    setDialogOpen(true);
+  };
+
+  const handleCloseDialog = () => {
+    setDialogOpen(false);
+  };
+
+  const handleSubmit = () => {
+    alert("Buenos días, mis estimados");
+  };
   return (
     <>
       <header>
@@ -17,10 +33,13 @@ function Entrenamientos() {
       <section className="cards body-div">
         <h1 className="page-title">Gestion de Entrenamientos</h1>
         <div className="container-opciones">
-          <div className="deportistas">Ejercicios</div>
-          <div className="equipos">Rutinas</div>
+          <div className="deportistas ">Ejercicios</div>
+          <div className="equipos select">Rutinas</div>
         </div>
         {/* <a className="btn-agregar-deportista">Agregar nuevo equipo</a> */}
+        <a className="exercise" onClick={handleOpenDialog}>
+          Agregar nueva rutina{" "}
+        </a>
         <article className="card bkb">
           <div className="ball-container bkb">
             <img
@@ -142,6 +161,38 @@ function Entrenamientos() {
           />
         </figure>
       </section>
+      <Dialog
+        title={"Registro de entrenamientos"}
+        open={dialogOpen}
+        onClose={handleCloseDialog}
+        handleSubmit={handleSubmit}
+      >
+        <Input
+          label={"Nombre del ejercicio"}
+          placeholder={"Ingresa el nombre del ejercicio"}
+          type={"text"}
+          name={"name"}
+        />
+
+        <Input
+          label={"Musculo que se enfoca"}
+          type={"select"}
+          name={"muscle"}
+          placeholder={"Musculo que se enfoca"}
+        >
+          <option value="pecho">Pecho</option>
+          <option value="espalda">Espalda</option>
+          <option value="pierna">Pierna</option>
+          <option value="brazos">Brazos</option>
+        </Input>
+
+        <Input
+          label={"Equipo a utilizar"}
+          placeholder={"Ingrese el equipo a utilizar"}
+          type={"text"}
+          name={"equipment"}
+        />
+      </Dialog>
     </>
   );
 }
