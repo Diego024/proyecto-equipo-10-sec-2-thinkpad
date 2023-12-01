@@ -3,7 +3,7 @@ const Equipo = require("../models/equipo.model");
 const equipoController={};
 
 equipoController.create= async(req,res,next)=>{
-    try{ const{id,name,create_date,players,sport} = req.body;
+    try{ const{name,create_date,players,sport} = req.body;
     const {identifier} = req.params;
 
     let equipo = await Equipo.findById(identifier);
@@ -13,7 +13,7 @@ equipoController.create= async(req,res,next)=>{
     }
 
     
-    equipo["id"] =id;              
+                  
     equipo["name"] =name;
     equipo["create_date"] =create_date;
     equipo["players"] =players;

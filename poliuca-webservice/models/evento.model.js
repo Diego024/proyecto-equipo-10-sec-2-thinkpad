@@ -21,6 +21,7 @@ hour:{
 },
 date:{
     type:Date,
+    required:true
 },
 hidden:{
     type:Boolean,

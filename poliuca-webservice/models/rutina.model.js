@@ -3,12 +3,13 @@ const Scheme = Moongose.Schema;
 
 //const typeSchema = new Scheme({id:{type:Number},name:{type:String}});
 
-const exerciseSchema = new Scheme({id:{type:Number},name:{type:String}});
+const exerciseSchema = new Scheme({name:{type:String}});
 
 const RutinaSchema = new Scheme({
 name:{
     type:String,
-    trim:true
+    trim:true,
+    requerid:true
 },
 discipline:{
     type:String,
@@ -16,8 +17,8 @@ discipline:{
 },
 //type:[typeSchema],
 tipo:{
-    id:{type:Number},
-    name_tipo:{type:String}
+    type:String,
+    requerid:true
 },
 exercise:[exerciseSchema],
 hidden:{
