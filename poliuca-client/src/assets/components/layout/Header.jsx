@@ -42,7 +42,7 @@ const Header = () => {
           <NavItem
             title={"Eventos del PoliUCA"}
             icon={PoliUcaEventsIcon}
-            url={""}
+            url={"/eventos"}
             alt={"PoliUCA events icon"}
           />
 
