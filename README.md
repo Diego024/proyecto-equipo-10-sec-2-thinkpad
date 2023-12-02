@@ -6,7 +6,7 @@
 
 | Nombre                 | Carnet        |
 | -------------          | ------------- |
-| Mauricio Contreras     |    20160602   |
+| Mauricio Contreras     |    00000422  |
 | Diego Pacheco          |    00007122   |
 | Alan Comandari         |    00252221   |
 
