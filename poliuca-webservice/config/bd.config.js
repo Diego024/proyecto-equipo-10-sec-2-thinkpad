@@ -10,7 +10,6 @@ const dbname=process.env.DBNAME || "poliuca";
 
 //Uri de conexion:
 //const dburi =process.env.DBURI ||`mongodb://${dbhost}:${dbport}/${dbname}`;
-
 const dburi = `mongodb+srv://admin:7UzOM3f2tDJtfnVF@cluster0.tvj6ppn.mongodb.net/laboratorio09?retryWrites=true&w=majority`;
 
 
