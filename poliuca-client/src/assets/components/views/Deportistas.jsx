@@ -46,85 +46,25 @@ function Deportistas() {
           Agregar nuevo deportista
         </a>
 
-        <article className="card">
-          <div className="profile-container">
-            <img src="../../src/assets/img/profile1.png" alt="" />
-          </div>
+        {players.map((player) => (
+          <article className="card">
+            <div className="profile-container">
+              <img src={player.picture} alt="Player profile picture" />
+            </div>
 
-          <div className="info-container">
-            <div className="nombre-deportista">
-              <p>Jose Alejandro Hernandez Chavez</p>
+            <div className="info-container">
+              <div className="nombre-deportista">
+                <p>
+                  {player.name} {player.last_name}
+                </p>
+              </div>
+              <div className="disciplinas">
+                <p>Disciplinas:</p>
+                {player.sports.map((sport) => sport)}
+              </div>
             </div>
-            <div className="disciplinas">
-              <p>Disciplinas:</p>
-              <p>Football, Basketball, Volleyball, Atletismo</p>
-            </div>
-          </div>
-        </article>
-
-        <article className="card">
-          <div className="profile-container">
-            <img src="../../src/assets/img/profile2.png" alt="" />
-          </div>
-
-          <div className="info-container">
-            <div className="nombre-deportista">
-              <p>Jose Alejandro Hernandez Chavez</p>
-            </div>
-            <div className="disciplinas">
-              <p>Disciplinas:</p>
-              <p>Football, Basketball, Volleyball, Atletismo</p>
-            </div>
-          </div>
-        </article>
-
-        <article className="card">
-          <div className="profile-container">
-            <img src="../../src/assets/img/profile3.png" alt="" />
-          </div>
-
-          <div className="info-container">
-            <div className="nombre-deportista">
-              <p>Jose Alejandro Hernandez Chavez</p>
-            </div>
-            <div className="disciplinas">
-              <p>Disciplinas:</p>
-              <p>Football, Basketball, Volleyball, Atletismo</p>
-            </div>
-          </div>
-        </article>
-
-        <article className="card">
-          <div className="profile-container">
-            <img src="../../src/assets/img/profile4.png" alt="" />
-          </div>
-
-          <div className="info-container">
-            <div className="nombre-deportista">
-              <p>Jose Alejandro Hernandez Chavez</p>
-            </div>
-            <div className="disciplinas">
-              <p>Disciplinas:</p>
-              <p>Football, Basketball, Volleyball, Atletismo</p>
-            </div>
-          </div>
-        </article>
-
-        <article className="card">
-          <div className="profile-container">
-            <img src="../../src/assets/img/profile5.png" alt="" />
-          </div>
-
-          <div className="info-container">
-            <div className="nombre-deportista">
-              <p>Jose Alejandro Hernandez Chavez</p>
-            </div>
-            <div className="disciplinas">
-              <p>Disciplinas:</p>
-              <p>Football, Basketball, Volleyball, Atletismo</p>
-            </div>
-          </div>
-        </article>
+          </article>
+        ))}
 
         <figure className="add-container" onClick={handleOpenDialog}>
           <img
