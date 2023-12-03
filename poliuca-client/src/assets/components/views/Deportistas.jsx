@@ -1,11 +1,17 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import "./../../css/deportistas.scss";
 import Dialog from "../layout/Dialog.jsx";
 import Input from "../layout/Input.jsx";
 import Header from "../layout/Header.jsx";
+import { getAllDeportistas } from "../../../services/deportista.service.js";
 
 function Deportistas() {
   const [dialogOpen, setDialogOpen] = useState(false);
+  const [players, setPlayers] = useState([]);
+
+  useEffect(() => {
+    fetchData();
+  }, []);
 
   const handleOpenDialog = () => {
     setDialogOpen(true);
@@ -17,6 +23,11 @@ function Deportistas() {
 
   const handleSubmit = () => {
     alert("Buenos días, mis estimados");
+  };
+
+  const fetchData = async () => {
+    const players = await getAllDeportistas();
+    setPlayers(players);
   };
 
   return (

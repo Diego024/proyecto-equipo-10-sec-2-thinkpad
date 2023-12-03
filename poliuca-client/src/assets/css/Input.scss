@@ -29,3 +29,16 @@ $main-color: #132a87;
     font-weight: bold;
   }
 }
+
+.checkbox-options {
+  display: flex;
+  flex-wrap: wrap;
+
+  label[name="checkboxOptions"] {
+    min-width: 50%;
+
+    input {
+      margin-right: 5px;
+    }
+  }
+}
