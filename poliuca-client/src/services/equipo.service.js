@@ -35,8 +35,9 @@ export const updateEquipo = async (equipoId,formData)=>{
 export const getAllEquipos = async ()=>{
     try {
         const response = await axios.get(`${BASE_URL}/equipo/getAll/`);
-
-        if(response.status === 200) return response.data.data;
+              
+        console.log(response.data.equipo);
+        if(response.status === 200) return response.data.equipo;
         else return[];
         
     } catch (e) {
