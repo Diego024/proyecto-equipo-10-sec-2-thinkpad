@@ -13,9 +13,9 @@ ejercicioValidator.createEjercicioValidator =[
      .notEmpty().withMessage("Grupo muscular es requerido"),
    body("equipo")
      .notEmpty().withMessage("Equipo requerido"),
-   body("imagen")
-     .notEmpty().withMessage("Imagen requerido")
-     .isURL().withMessage("Imagen debe ser una URL")    
+  // body("imagen")
+  //   .notEmpty().withMessage("Imagen requerido")
+    // .isURL().withMessage("Imagen debe ser una URL")    
 ];
 
 
