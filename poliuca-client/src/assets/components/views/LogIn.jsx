@@ -7,8 +7,10 @@ import GoogleLogInButton from "../layout/GoogleLogin";
 const LogIn = (props) => {
   const navigate = useNavigate();
 
-  const handleSubmit = async () => {
-    navigate("/calendario");
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    // navigate("/calendario");
+    alert("Tienes que ingresar con tu correo UCA");
   };
 
   return (

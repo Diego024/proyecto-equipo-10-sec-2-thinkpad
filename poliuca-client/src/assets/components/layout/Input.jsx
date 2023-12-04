@@ -1,7 +1,23 @@
 import React from "react";
 import "./../../css/Input.scss";
 
-const Input = ({ label, placeholder, type, name, children }) => {
+const Input = ({
+  label,
+  placeholder,
+  type,
+  name,
+  children,
+  formData,
+  setFormData,
+}) => {
+  const handleChange = (e) => {
+    setFormData({
+      ...formData,
+      [e.target.name]:
+        e.target.type === "checkbox" ? e.target.checked : e.target.value,
+    });
+  };
+
   return (
     <div className={`input-container ${type === "select" ? "select" : ""}`}>
       <label className="input-label" htmlFor={name}>
@@ -24,6 +40,7 @@ const Input = ({ label, placeholder, type, name, children }) => {
           type={type}
           name={name}
           id={name}
+          onChange={handleChange}
         />
       )}
     </div>

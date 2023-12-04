@@ -3,6 +3,7 @@ import axios from "axios";
 const BASE_URL = "http://localhost:3500/api";
 
 export const createdDeportista = async (formData)=>{
+    console.log(formData);
     try {
         const response = await axios.post(`${BASE_URL}/deportista/create`,formData,{
             headers:{
@@ -36,7 +37,7 @@ export const getAllDeportistas = async ()=>{
     try {
         const response = await axios.get(`${BASE_URL}/deportista/getAll/`);
 
-        if(response.status === 200) return response.data.data;
+        if(response.status === 200) return response.data.deportista;
         else return[];
         
     } catch (e) {

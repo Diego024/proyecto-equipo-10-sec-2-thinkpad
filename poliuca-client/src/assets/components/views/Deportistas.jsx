@@ -1,11 +1,35 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import "./../../css/deportistas.scss";
 import Dialog from "../layout/Dialog.jsx";
 import Input from "../layout/Input.jsx";
 import Header from "../layout/Header.jsx";
+import {
+  createdDeportista,
+  getAllDeportistas,
+} from "../../../services/deportista.service.js";
+import { useNavigate } from "react-router";
 
 function Deportistas() {
+  const navigate = useNavigate();
+
+  const initialFormData = {
+    name: "",
+    last_name: "",
+    email: "",
+    weight: 0,
+    height: 0,
+    birth_date: "",
+    sports: [],
+  };
+
   const [dialogOpen, setDialogOpen] = useState(false);
+  const [players, setPlayers] = useState([]);
+  const [formData, setFormData] = useState(initialFormData);
+  const [errorMessages, setErrorMessages] = useState([]);
+
+  useEffect(() => {
+    fetchData();
+  }, []);
 
   const handleOpenDialog = () => {
     setDialogOpen(true);
@@ -15,8 +39,45 @@ function Deportistas() {
     setDialogOpen(false);
   };
 
-  const handleSubmit = () => {
-    alert("Buenos días, mis estimados");
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+
+    const errorsValidation = /*validateForm(formData) */ [];
+
+    setErrorMessages([]);
+
+    if (errorsValidation.length > 0) {
+      setErrorMessages(errorsValidation);
+      return;
+    }
+
+    try {
+      await createdDeportista(formData);
+      setFormData(initialFormData);
+    } catch (error) {
+      alert("ERROR al guardar el deportista: " + error);
+    }
+  };
+
+  const fetchData = async () => {
+    const players = await getAllDeportistas();
+    setPlayers(players);
+  };
+
+  const handleCheckboxChange = (sportName) => {
+    setFormData((prevData) => {
+      if (prevData.sports.some((sport) => sport.name === sportName)) {
+        return {
+          ...prevData,
+          sports: prevData.sports.filter((sport) => sport.name !== sportName),
+        };
+      } else {
+        return {
+          ...prevData,
+          sports: [...prevData.sports, { name: sportName }],
+        };
+      }
+    });
   };
 
   return (
@@ -28,92 +89,34 @@ function Deportistas() {
 
         <div className="container-opciones">
           <div className="deportistas select">Deportistas</div>
-          <div className="equipos">Equipos</div>
+          <div className="equipos" onClick={() => navigate("/equipos")}>
+            Equipos
+          </div>
         </div>
 
         <a className="btn-agregar-deportista" onClick={handleOpenDialog}>
           Agregar nuevo deportista
         </a>
 
-        <article className="card">
-          <div className="profile-container">
-            <img src="../../src/assets/img/profile1.png" alt="" />
-          </div>
+        {players.map((player) => (
+          <article className="card">
+            <div className="profile-container">
+              <img src={player.picture} alt="Player profile picture" />
+            </div>
 
-          <div className="info-container">
-            <div className="nombre-deportista">
-              <p>Jose Alejandro Hernandez Chavez</p>
+            <div className="info-container">
+              <div className="nombre-deportista">
+                <p>
+                  {player.name} {player.last_name}
+                </p>
+              </div>
+              <div className="disciplinas">
+                <p>Disciplinas:</p>
+                {player.sports.map((sport) => `${sport.name} `)}
+              </div>
             </div>
-            <div className="disciplinas">
-              <p>Disciplinas:</p>
-              <p>Football, Basketball, Volleyball, Atletismo</p>
-            </div>
-          </div>
-        </article>
-
-        <article className="card">
-          <div className="profile-container">
-            <img src="../../src/assets/img/profile2.png" alt="" />
-          </div>
-
-          <div className="info-container">
-            <div className="nombre-deportista">
-              <p>Jose Alejandro Hernandez Chavez</p>
-            </div>
-            <div className="disciplinas">
-              <p>Disciplinas:</p>
-              <p>Football, Basketball, Volleyball, Atletismo</p>
-            </div>
-          </div>
-        </article>
-
-        <article className="card">
-          <div className="profile-container">
-            <img src="../../src/assets/img/profile3.png" alt="" />
-          </div>
-
-          <div className="info-container">
-            <div className="nombre-deportista">
-              <p>Jose Alejandro Hernandez Chavez</p>
-            </div>
-            <div className="disciplinas">
-              <p>Disciplinas:</p>
-              <p>Football, Basketball, Volleyball, Atletismo</p>
-            </div>
-          </div>
-        </article>
-
-        <article className="card">
-          <div className="profile-container">
-            <img src="../../src/assets/img/profile4.png" alt="" />
-          </div>
-
-          <div className="info-container">
-            <div className="nombre-deportista">
-              <p>Jose Alejandro Hernandez Chavez</p>
-            </div>
-            <div className="disciplinas">
-              <p>Disciplinas:</p>
-              <p>Football, Basketball, Volleyball, Atletismo</p>
-            </div>
-          </div>
-        </article>
-
-        <article className="card">
-          <div className="profile-container">
-            <img src="../../src/assets/img/profile5.png" alt="" />
-          </div>
-
-          <div className="info-container">
-            <div className="nombre-deportista">
-              <p>Jose Alejandro Hernandez Chavez</p>
-            </div>
-            <div className="disciplinas">
-              <p>Disciplinas:</p>
-              <p>Football, Basketball, Volleyball, Atletismo</p>
-            </div>
-          </div>
-        </article>
+          </article>
+        ))}
 
         <figure className="add-container" onClick={handleOpenDialog}>
           <img
@@ -129,18 +132,23 @@ function Deportistas() {
         onClose={handleCloseDialog}
         handleSubmit={handleSubmit}
       >
+        {/* <form action="get" id="form" className="dialog-content"> */}
         <Input
           label={"Nombres"}
           placeholder={"Ingresa los nombres"}
           type={"text"}
           name={"name"}
+          formData={formData}
+          setFormData={setFormData}
         />
 
         <Input
           label={"Apellidos"}
           placeholder={"Ingresa los apellidos"}
           type={"text"}
-          name={"lastname"}
+          name={"last_name"}
+          formData={formData}
+          setFormData={setFormData}
         />
 
         <Input
@@ -148,6 +156,8 @@ function Deportistas() {
           placeholder={"Ingresa el correo electrónico"}
           type={"email"}
           name={"email"}
+          formData={formData}
+          setFormData={setFormData}
         />
 
         <Input
@@ -155,6 +165,8 @@ function Deportistas() {
           placeholder={"Ingresa el peso en libras"}
           type={"number"}
           name={"weight"}
+          formData={formData}
+          setFormData={setFormData}
         />
 
         <Input
@@ -162,34 +174,65 @@ function Deportistas() {
           placeholder={"Ingresa la altura en centímetros"}
           type={"number"}
           name={"height"}
+          formData={formData}
+          setFormData={setFormData}
         />
 
         <Input
           label={"Fecha de nacimiento"}
           placeholder={"Ingresa la fecha de nacimiento"}
           type={"date"}
-          name={"birthdate"}
+          name={"birth_date"}
+          formData={formData}
+          setFormData={setFormData}
         />
-        <Input label={"Disciplinas"} type={"checkbox"} name={"checkboxOptions"}>
+        <Input label={"Disciplinas"} type={"checkbox"}>
           <label>
-            <input type="checkbox" name="volley" />
+            <input
+              type="checkbox"
+              name="volley"
+              checked={formData.sports.some(
+                (sport) => sport.name === "Vóleibol"
+              )}
+              onChange={() => handleCheckboxChange("Vóleibol")}
+            />
             Volleyball
           </label>
           <label>
-            <input type="checkbox" name="basket" />
+            <input
+              type="checkbox"
+              name="basket"
+              checked={formData.sports.some(
+                (sport) => sport.name === "Baloncesto"
+              )}
+              onChange={() => handleCheckboxChange("Baloncesto")}
+            />
             Basketball
           </label>
 
           <label>
-            <input type="checkbox" name="futbol" />
+            <input
+              type="checkbox"
+              name="futbol"
+              checked={formData.sports.some((sport) => sport.name === "Fútbol")}
+              onChange={() => handleCheckboxChange("Fútbol")}
+            />
             Futbol
           </label>
 
           <label>
-            <input type="checkbox" name="futsal" />
+            <input
+              type="checkbox"
+              name="futsal"
+              checked={formData.sports.some(
+                (sport) => sport.name === "Fútbol sala"
+              )}
+              onChange={() => handleCheckboxChange("Fútbol sala")}
+            />
             Futbol Sala
           </label>
         </Input>
+        {/* </form> */}
       </Dialog>
     </>
   );
