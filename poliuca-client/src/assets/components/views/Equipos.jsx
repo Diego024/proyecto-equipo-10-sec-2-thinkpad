@@ -1,10 +1,73 @@
 import "./../../css/equipos.scss";
-import Logo from "../icons/Logo.jsx";
 import Header from "../layout/Header.jsx";
-import { useNavigate } from "react-router";
+import {useNavigate} from "react-router";
+import Dialog from "../layout/Dialog.jsx";
+import Input from "../layout/Input.jsx";
+import{getAllEquipos,createdEquipo} from "../../../services/equipo.service.js"
+import { useEffect, useState } from "react";
+import { formatDate} from "./../../utils.js";
 
 function Equipos() {
-  const navigate = useNavigate();
+ const navigate = useNavigate(); 
+
+ const initialFormData = {
+   name:"",
+   players:0,
+   sport:"",
+ };
+
+ const [dialogOpen, setDialogOpen] = useState(false);
+ const [formData, setFormData] = useState(initialFormData);
+ const [errorMessages, setErrorMessages] = useState([]);
+ 
+ const[equipos,setEquipo] = useState([]);
+
+  useEffect(()=>{
+    fetchEquipos();
+  },[]);
+
+  const handleOpenDialog=()=>{
+    setDialogOpen(true);
+  };
+
+  const handleCloseDialog=()=>{
+    setDialogOpen(false);
+  }
+
+  const handleSubmit=async(e)=>{
+    e.preventDefault();
+     
+    const errorsValidation =[];
+
+    setErrorMessages([]);
+    
+    if (errorsValidation.length > 0) {
+      setErrorMessages(errorsValidation);
+      return;
+    }
+
+    try {
+      const nuevo = await createdEquipo(formData);
+      if(nuevo){
+        console.log(formData);
+      }
+      setFormData(initialFormData);
+    } catch (error) {
+      alert("ERROR al guardar el Equipo: " + error);
+    }
+  }
+
+  const fetchEquipos = async () =>{
+    const equipos = await getAllEquipos();
+    setEquipo(equipos);
+  };
+
+
+  const handleChange = (e)=>{
+    console.log(e.target.value);
+    formData.sport=e.target.value;
+  }
+
 
   return (
     <>
@@ -20,136 +83,111 @@ function Equipos() {
           <div className="equipos select">Equipos</div>
         </div>
 
-        <a className="btn-agregar-deportista">Agregar nuevo equipo</a>
-
-        <article className="card bkb">
+        <a className="btn-agregar-deportista" onClick={handleOpenDialog}>Agregar nuevo equipo</a>
+       
+        {equipos.map((equipo)=>(
+           <article className="card bkb">
           <div className="ball-container bkb">
             <img
               src="../../src/assets/img/basket-ball 1.png"
               alt="volleyball"
             />
           </div>
-
+              <p  name="_id" hidden value={equipo._id}></p>
           <div className="deporte-container">
             <div className="seleccion">
-              <p>Selección UCA</p>
+              <p>{equipo.name}</p>
             </div>
             <div className="fecha-creacion">
               <p>Fecha de creacion:</p>
-              <p className="bkb">25 de enero del 2023 </p>
+              <p className="bkb">{formatDate(equipo.create_date)} </p>
             </div>
             <div className="numero-jugadores">
               <p>N° de jugadores:</p>
 
               <div className="num bkb">
-                <p>14</p>
+                <p>{equipo.players}</p>
               </div>
             </div>
           </div>
         </article>
-
-        <article className="card vol">
-          <div className="ball-container vol">
-            <img src="../../src/assets/img/volleyball 1.png" alt="volleyball" />
-          </div>
-
-          <div className="deporte-container">
-            <div className="seleccion">
-              <p className="baloncesto">Selección UCA</p>
-            </div>
-            <div className="fecha-creacion">
-              <p>Fecha de creacion:</p>
-              <p className="vol">25 de enero del 2023 </p>
-            </div>
-            <div className="numero-jugadores">
-              <p>N° de jugadores:</p>
-
-              <div className="num vol">
-                {" "}
-                <p>14</p>
-              </div>
-            </div>
-          </div>
-        </article>
-
-        <article className="card fut">
-          <div className="ball-container fut">
-            <img src="../../src/assets/img/soccer 1.png" alt="volleyball" />
-          </div>
-
-          <div className="deporte-container">
-            <div className="seleccion">
-              <p>Selección UCA</p>
-            </div>
-            <div className="fecha-creacion">
-              <p>Fecha de creacion:</p>
-              <p className="fut">25 de enero del 2023 </p>
-            </div>
-            <div className="numero-jugadores">
-              <p>N° de jugadores:</p>
-
-              <div className="num fut">
-                {" "}
-                <p>14</p>
-              </div>
-            </div>
-          </div>
-        </article>
-
-        <article className="card atletismo">
-          <div className="ball-container atletismo">
-            <img src="../../src/assets/img/sports 1.png" alt="volleyball" />
-          </div>
-
-          <div className="deporte-container">
-            <div className="seleccion">
-              <p>Selección UCA</p>
-            </div>
-            <div className="fecha-creacion">
-              <p>Fecha de creacion:</p>
-              <p className="atletismo">25 de enero del 2023 </p>
-            </div>
-            <div className="numero-jugadores">
-              <p>N° de jugadores:</p>
-
-              <div className="num atletismo">
-                {" "}
-                <p>14</p>
-              </div>
-            </div>
-          </div>
-        </article>
-
-        <article className="card bkb">
-          <div className="ball-container bkb">
-            <img src="../../src/assets/img/volleyball 1.png" alt="volleyball" />
-          </div>
-
-          <div className="deporte-container">
-            <div className="seleccion ">
-              <p>Selección UCA</p>
-            </div>
-            <div className="fecha-creacion">
-              <p>Fecha de creacion:</p>
-              <p className="vol">25 de enero del 2023 </p>
-            </div>
-            <div className="numero-jugadores">
-              <p>N° de jugadores:</p>
-
-              <div className="num bkb">
-                {" "}
-                <p>14</p>
-              </div>
-            </div>
-          </div>
-        </article>
-
-        <figure className="add-container">
+        ))}             
+        
+       <figure className="add-container">
           <img
             className="add-btn"
             src="../../src/assets/img/Add.png"
             alt="add"
           />
+
+<Dialog
+        title={"Gestión de Equipos"}
+        open={dialogOpen}
+        onClose={handleCloseDialog}
+        handleSubmit={handleSubmit}
+      >
+        {/* <form action="get" id="form" className="dialog-content"> */}
+        <Input
+          label={"Nombre del Equipo"}
+          placeholder={"Ingresa los nombres"}
+          type={"text"}
+          name={"name"}
+          formData={formData}
+          setFormData={setFormData}
+        />
+
+        <Input 
+          label={"Numero Jugadores"}
+          placeholder={"Ingresa la cantidad de jugadores"}
+          type={"number"}
+          name={"players"}
+          formData={formData}
+          setFormData={setFormData}
+        />
+
+         <Input label={"Disciplinas"} type={"checkbox"}>
+          <label>
+            <input
+              type="radio"
+              name="sport"
+             value="Volleyball"
+              onChange={handleChange}
+            />
+            Volleyball
+          </label>
+          <label>
+            <input
+              type="radio"
+              name="sport"
+              value="Basketball"
+              onChange={handleChange}
+            />
+            Basketball
+          </label>
+
+          <label>
+            <input
+              type="radio"
+              name="sport"
+              value="Futbol"
+              onChange={handleChange}
+            />
+            Futbol
+          </label>
+
+          <label>
+            <input
+              type="radio"
+              name="sport"
+              value="Futbol sala"
+              onChange={handleChange}
+            />
+            Futbol Sala
+          </label>
+        </Input>
+        {/* </form> */}
+      </Dialog>
+
         </figure>
       </section>
     </>
