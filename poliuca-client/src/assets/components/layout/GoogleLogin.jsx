@@ -33,7 +33,7 @@ const GoogleLogInButton = () => {
       });
   };
 
-  const saveInfo = (userInfo) => {
+  const saveInfo = async (userInfo) => {
     const user = {
       picture: userInfo.picture,
       name: userInfo.given_name,

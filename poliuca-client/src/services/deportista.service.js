@@ -3,6 +3,7 @@ import axios from "axios";
 const BASE_URL = "http://localhost:3500/api";
 
 export const createdDeportista = async (formData)=>{
+    console.log(formData);
     try {
         const response = await axios.post(`${BASE_URL}/deportista/create`,formData,{
             headers:{

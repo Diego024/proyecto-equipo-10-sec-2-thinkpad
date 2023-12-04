@@ -1,24 +1,22 @@
 import "./../../css/equipos.scss";
 import Logo from "../icons/Logo.jsx";
+import Header from "../layout/Header.jsx";
+import { useNavigate } from "react-router";
 
 function Equipos() {
+  const navigate = useNavigate();
+
   return (
     <>
-      <header>
-        <img
-          className="menu-image"
-          src="../../src/assets/img/open-menu.png"
-          alt="MENU"
-        />
-
-        <Logo />
-      </header>
+      <Header />
 
       <section className="cards body-div">
         <h1 className="page-title">Gestion de Deportistas</h1>
 
         <div className="container-opciones">
-          <div className="deportistas">Deportistas</div>
+          <div className="deportistas" onClick={() => navigate("/deportistas")}>
+            Deportistas
+          </div>
           <div className="equipos select">Equipos</div>
         </div>
 
