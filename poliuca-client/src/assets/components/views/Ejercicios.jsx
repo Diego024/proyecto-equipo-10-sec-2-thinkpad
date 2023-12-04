@@ -1,13 +1,30 @@
-import { useState } from "react";
+import { useEffect,useState } from "react";
 import "./../../css/ejercicios.scss";
 import Header from "../layout/Header.jsx";
-import Reloj from "../icons/Reloj.jsx";
-import Maps from "../icons/Maps.jsx";
 import Dialog from "../layout/Dialog.jsx";
 import Input from "../layout/Input.jsx";
+import { useNavigate } from "react-router";
+import{getAllEjercicios,createdEjercicio} from "../../../services/ejercicio.service.js"
 
 function Ejercicios() {
+  const navigate =useNavigate();
+
+  const initialFormData={
+   name:"",
+   grupo_muscular:"",
+   imagen:"",
+   equipo:"",
+  };
+
   const [dialogOpen, setDialogOpen] = useState(false);
+  const [formData, setFormData] = useState(initialFormData);
+  const [ejercicios, setEjercicio] = useState([]);
+  const [errorMessages, setErrorMessages] = useState([]);
+
+  useEffect(() => {
+    fetchData();
+  }, []);
+
 
   const handleOpenDialog = () => {
     setDialogOpen(true);
@@ -17,9 +34,33 @@ function Ejercicios() {
     setDialogOpen(false);
   };
 
-  const handleSubmit = () => {
-    alert("Buenos días, mis estimados");
+  const handleSubmit = async(e) => {
+    e.preventDefault();
+
+    const errorsValidation = /*validateForm(formData) */ [];
+
+    setErrorMessages([]);
+
+    if (errorsValidation.length > 0) {
+      setErrorMessages(errorsValidation);
+      return;
+    }
+
+    try {
+      await createdEjercicio(formData);
+      console.log(formData);
+      setFormData(initialFormData);
+    } catch (error) {
+      alert("ERROR al guardar el ejercicio: " + error);
+    }
   };
+
+  const fetchData = async () => {
+    const ejercicios = await getAllEjercicios();
+   console.log(ejercicios)
+    setEjercicio(ejercicios);
+  };
+
   return (
     <>
       <Header />
@@ -28,12 +69,14 @@ function Ejercicios() {
         <h1 className="page-title">Gestion de entrenamientos</h1>
         <div className="container-opciones2">
           <div className="ejercicios select">Ejercicios</div>
-          <div className="rutinas ">Rutinas</div>
+          <div className="rutinas" onClick={()=>navigate("/entrenamientos")}>Entrenamientos</div>
         </div>
         <a className="btn-nuevo-ejercicio" onClick={handleOpenDialog}>
           Agregar nuevo ejercicio
         </a>
-
+         
+         {ejercicios.map((ejercicio)=>(
+        
         <article className="card abdomen">
           <div className="parteCuerpo-container">
             <img src="../../src/assets/img/abs.png" alt="abs" />
@@ -48,137 +91,23 @@ function Ejercicios() {
           </div>
           <div className="ejercicio-container">
             <div className="ejercicio-item">
-              <p className="name-ejercicio">Flexiones de abdominales</p>
+              <p className="name-ejercicio">{ejercicio.name}</p>
             </div>
 
             <div className="ejercicio-item">
               <img src="../../src/assets/img/target.png" alt="" />
-              <p className="body-focus">Abdomen</p>
+              <p className="body-focus">{ejercicio.grupo_muscular}</p>
             </div>
 
             <div className="ejercicio-item">
               <img src="../../src/assets/img/pilates.png" alt="staff" />
-              <p className="material">Alfombrilla</p>
+              <p className="material">{ejercicio.equipo}</p>
             </div>
           </div>
-        </article>
-
-        <article className="card brazo">
-          <div className="parteCuerpo-container">
-            <img src="../../src/assets/img/arm.png" alt="abs" />
-          </div>
-
-          <div className="rectangle-container">
-            <img
-              className="rectangle"
-              src="../../src/assets/img/rectangle.png"
-              alt="rectanguloQueSepara"
-            />
-          </div>
-          <div className="ejercicio-container">
-            <div className="ejercicio-item">
-              <p className="name-ejercicio">Curl de biceps</p>
-            </div>
-
-            <div className="ejercicio-item">
-              <img src="../../src/assets/img/target.png" alt="" />
-              <p className="body-focus">Brazos</p>
-            </div>
-
-            <div className="ejercicio-item">
-              <img src="../../src/assets/img/pilates.png" alt="staff" />
-              <p className="material">Mancuernas</p>
-            </div>
-          </div>
-        </article>
-
-        <article className="card pecho">
-          <div className="parteCuerpo-container">
-            <img src="../../src/assets/img/chest.png" alt="abs" />
-          </div>
-
-          <div className="rectangle-container">
-            <img
-              className="rectangle"
-              src="../../src/assets/img/rectangle.png"
-              alt="rectanguloQueSepara"
-            />
-          </div>
-          <div className="ejercicio-container">
-            <div className="ejercicio-item">
-              <p className="name-ejercicio">Press plano de mancuernas</p>
-            </div>
-
-            <div className="ejercicio-item">
-              <img src="../../src/assets/img/target.png" alt="" />
-              <p className="body-focus">Pecho</p>
-            </div>
-
-            <div className="ejercicio-item">
-              <img src="../../src/assets/img/pilates.png" alt="staff" />
-              <p className="material">Banco plano, mancuernas</p>
-            </div>
-          </div>
-        </article>
-
-        <article className="card espalda">
-          <div className="parteCuerpo-container">
-            <img src="../../src/assets/img/back.png" alt="abs" />
-          </div>
-
-          <div className="rectangle-container">
-            <img
-              className="rectangle"
-              src="../../src/assets/img/rectangle.png"
-              alt="rectanguloQueSepara"
-            />
-          </div>
-          <div className="ejercicio-container">
-            <div className="ejercicio-item">
-              <p className="name-ejercicio">Remo con mancuernas</p>
-            </div>
-
-            <div className="ejercicio-item">
-              <img src="../../src/assets/img/target.png" alt="" />
-              <p className="body-focus">Espalda</p>
-            </div>
-
-            <div className="ejercicio-item">
-              <img src="../../src/assets/img/pilates.png" alt="staff" />
-              <p className="material">Mancuernas</p>
-            </div>
-          </div>
-        </article>
-
-        <article className="card cardio">
-          <div className="parteCuerpo-container">
-            <img src="../../src/assets/img/cardio.png" alt="abs" />
-          </div>
-
-          <div className="rectangle-container">
-            <img
-              className="rectangle"
-              src="../../src/assets/img/rectangle.png"
-              alt="rectanguloQueSepara"
-            />
-          </div>
-          <div className="ejercicio-container">
-            <div className="ejercicio-item">
-              <p className="name-ejercicio">Correr 15 minutos</p>
-            </div>
-
-            <div className="ejercicio-item">
-              <img src="../../src/assets/img/target.png" alt="" />
-              <p className="body-focus">Cardio</p>
-            </div>
-
-            <div className="ejercicio-item">
-              <img src="../../src/assets/img/pilates.png" alt="staff" />
-              <p className="material">Caminadora</p>
-            </div>
-          </div>
-        </article>
+        </article> 
+         ))} ;
       </section>
+
       <Dialog
         title={"Registro de entrenamientos"}
         open={dialogOpen}
@@ -186,54 +115,36 @@ function Ejercicios() {
         handleSubmit={handleSubmit}
       >
         <Input
-          label={"Nombre del entrenamiento"}
-          placeholder={"Ingresa el nombre del entrenamiento"}
+          label={"Nombre del ejercicio"}
+          placeholder={"Ingresa el nombre del ejercicio"}
           type={"text"}
           name={"name"}
+          formData={formData}
+          setFormData={setFormData}
         />
 
         <Input
-          label={"Disciplina"}
+          label={"Musculo que se enfoca"}
           type={"select"}
-          name={"sport"}
-          placeholder={"Seleccione la disciplina"}
+          name={"grupo_muscular"}
+          placeholder={"Musculo que se enfoca"}
+          formData={formData}
+          setFormData={setFormData}
         >
-          <option value="Volleyball">Volleyball</option>
-          <option value="Soccer">Futbol</option>
-          <option value="Basketball">Baloncesto</option>
-          <option value="run">Atletismo</option>
+          <option value="pecho">Pecho</option>
+          <option value="espalda">Espalda</option>
+          <option value="pierna">Pierna</option>
+          <option value="brazos">Brazos</option>
         </Input>
 
         <Input
-          label={"Fecha del entreno"}
-          placeholder={"Ingrese la fecha del entreno"}
-          type={"date"}
-          name={"date"}
+          label={"Equipo a utilizar"}
+          placeholder={"Ingrese el equipo a utilizar"}
+          type={"text"}
+          name={"equipo"}
+          formData={formData}
+          setFormData={setFormData}
         />
-
-        <Input label={"Tipo"} type={"checkbox"} name={"checkboxOptions"}>
-          <label>
-            <input type="checkbox" name="individual" />
-            Individual
-          </label>
-          <label>
-            <input type="checkbox" name="grupal" />
-            Grupal
-          </label>
-        </Input>
-
-        <Input
-          label={"Ejercicios a realizar"}
-          placeholder={"Seleccione los ejercicios"}
-          type={"select"}
-          name={"exercises"}
-        >
-          <option value="press">Press</option>
-          <option value="remo">Remo</option>
-          <option value="squat">Squat</option>
-          <option value="curl">Curl</option>
-          <option value="cardio">Cardio</option>
-        </Input>
       </Dialog>
     </>
   );

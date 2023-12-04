@@ -15,7 +15,8 @@ grupo_muscular:{
 imagen:{
     type:String,
     trim:true,
-    required:true,},
+   // required:true,
+},
 equipo:{
     type:String,
     trim:true,
