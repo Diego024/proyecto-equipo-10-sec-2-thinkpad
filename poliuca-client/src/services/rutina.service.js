@@ -36,7 +36,7 @@ export const getAllRutinas = async ()=>{
     try {
         const response = await axios.get(`${BASE_URL}/rutina/getAll/`);
 
-        if(response.status === 200) return response.data.data;
+        if(response.status === 200) return response.data.rutina;
         else return[];
         
     } catch (e) {

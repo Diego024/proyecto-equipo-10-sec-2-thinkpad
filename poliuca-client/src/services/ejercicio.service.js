@@ -35,8 +35,9 @@ export const updateEjercicio = async (ejercicioId,formData)=>{
 export const getAllEjercicios = async ()=>{
     try {
         const response = await axios.get(`${BASE_URL}/ejercicio/getAll/`);
-
-        if(response.status === 200) return response.data.data;
+            
+        console.log(response)
+        if(response.status === 200) return response.data.ejercicio;
         else return[];
         
     } catch (e) {

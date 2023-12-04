@@ -19,7 +19,7 @@ function Equipos() {
  const [dialogOpen, setDialogOpen] = useState(false);
  const [formData, setFormData] = useState(initialFormData);
  const [errorMessages, setErrorMessages] = useState([]);
- 
+
  const[equipos,setEquipo] = useState([]);
 
   useEffect(()=>{
@@ -52,6 +52,7 @@ function Equipos() {
         console.log(formData);
       }
       setFormData(initialFormData);
+      setDialogOpen(false)
     } catch (error) {
       alert("ERROR al guardar el Equipo: " + error);
     }

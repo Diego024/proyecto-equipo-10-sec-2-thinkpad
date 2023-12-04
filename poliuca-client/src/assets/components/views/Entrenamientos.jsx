@@ -1,11 +1,30 @@
-import { useState } from "react";
+import { useEffect,useState } from "react";
 import "./../../css/entrenamientos.scss";
+import Header from "../layout/Header.jsx";
 import Logo from "../icons/Logo.jsx";
 import Dialog from "../layout/Dialog.jsx";
 import Input from "../layout/Input.jsx";
+import{getAllRutinas,createdRutina} from "../../../services/rutina.service.js"
+import { useNavigate } from "react-router-dom";
 
 function Entrenamientos() {
+  const navigate = useNavigate();
+
+  const initialFormData={
+    name:"",
+    discipline:"",
+    tipo:"",
+    exercise:[],
+  }
+
   const [dialogOpen, setDialogOpen] = useState(false);
+  const [rutinas, setRutina] = useState([]);
+  const [formData, setFormData] = useState(initialFormData);
+  const [errorMessages, setErrorMessages] = useState([]);
+
+  useEffect(() => {
+    fetchData();
+  }, []);
 
   const handleOpenDialog = () => {
     setDialogOpen(true);
@@ -15,31 +34,46 @@ function Entrenamientos() {
     setDialogOpen(false);
   };
 
-  const handleSubmit = () => {
-    alert("Buenos días, mis estimados");
+  const handleSubmit = async(e) => {
+    e.preventDefault();
+
+    const errorsValidation = /*validateForm(formData) */ [];
+
+    setErrorMessages([]);
+
+    if (errorsValidation.length > 0) {
+      setErrorMessages(errorsValidation);
+      return;
+    }
+
+    try {
+      await createdRutina(formData);
+      setFormData(initialFormData);
+    } catch (error) {
+      alert("ERROR al guardar rutina: " + error);
+    }
+  };
+
+  const fetchData = async () => {
+    const rutinas = await getAllRutinas();
+    setRutina(rutinas);
   };
   return (
     <>
-      <header>
-        <img
-          className="menu-image"
-          src="../../src/assets/img/open-menu.png"
-          alt="MENU"
-        />
-
-        <Logo />
-      </header>
-
+         <Header />
       <section className="cards body-div">
         <h1 className="page-title">Gestion de Entrenamientos</h1>
         <div className="container-opciones">
-          <div className="deportistas ">Ejercicios</div>
-          <div className="equipos select">Rutinas</div>
+          <div className="deportistas" onClick={() => navigate("/ejercicios")}>Ejercicios</div>
+          <div className="equipos select">Entrenamientos</div>
         </div>
         {/* <a className="btn-agregar-deportista">Agregar nuevo equipo</a> */}
         <a className="exercise" onClick={handleOpenDialog}>
           Agregar nueva rutina{" "}
         </a>
+
+        {rutinas.map((rutina)=>(
+
         <article className="card bkb">
           <div className="ball-container bkb">
             <img
@@ -50,109 +84,23 @@ function Entrenamientos() {
 
           <div className="deporte-container">
             <div className="seleccion basket">
-              <p>Rutina de Fundamentales</p>
+              <p>{rutina.name}</p>
             </div>
             <div className="fecha-creacion">
               <p>Tipo: </p>
-              <p className="bkb">Grupal</p>
+              <p className="bkb">{rutina.tipo}</p>
             </div>
             <div className="numero-jugadores">
               <p>Disciplina:</p>
 
               <div className="basketball">
-                <p>Basketball</p>
+                <p>{rutina.discipline}</p>
               </div>
             </div>
           </div>
         </article>
-        <article className="card vol">
-          <div className="ball-container vol">
-            <img src="../../src/assets/img/volleyball 1.png" alt="volleyball" />
-          </div>
-
-          <div className="deporte-container">
-            <div className="seleccion volleyball">
-              <p>Rutina de Fundamentales</p>
-            </div>
-            <div className="fecha-creacion">
-              <p>Tipo: </p>
-              <p className="vol">Grupal</p>
-            </div>
-            <div className="numero-jugadores">
-              <p>Disciplina:</p>
-
-              <div className="volleyball">
-                <p>Basketball</p>
-              </div>
-            </div>
-          </div>
-        </article>
-        <article className="card fut">
-          <div className="ball-container fut">
-            <img src="../../src/assets/img/soccer 1.png" alt="volleyball" />
-          </div>
-
-          <div className="deporte-container">
-            <div className="seleccion futbol">
-              <p>Rutina de sets y saque</p>
-            </div>
-            <div className="fecha-creacion">
-              <p>Tipo: </p>
-              <p className="fut">Grupal</p>
-            </div>
-            <div className="numero-jugadores">
-              <p>Disciplina:</p>
-
-              <div className="futbol">
-                <p>Basketball</p>
-              </div>
-            </div>
-          </div>
-        </article>
-        <article className="card atletismo">
-          <div className="ball-container atletismo">
-            <img src="../../src/assets/img/sports 1.png" alt="volleyball" />
-          </div>
-
-          <div className="deporte-container">
-            <div className="seleccion run ">
-              <p>Rutina de Fundamentales</p>
-            </div>
-            <div className="fecha-creacion">
-              <p>Tipo: </p>
-              <p className="atletismo">Grupal</p>
-            </div>
-            <div className="numero-jugadores">
-              <p>Disciplina:</p>
-
-              <div className="run">
-                <p>Basketball</p>
-              </div>
-            </div>
-          </div>
-        </article>
-        <article className="card vol">
-          <div className="ball-container vol">
-            <img src="../../src/assets/img/volleyball 1.png" alt="volleyball" />
-          </div>
-
-          <div className="deporte-container">
-            <div className="seleccion volleyball">
-              <p>Rutina de Fundamentales</p>
-            </div>
-            <div className="fecha-creacion">
-              <p>Tipo: </p>
-              <p className="vol">Grupal</p>
-            </div>
-            <div className="numero-jugadores">
-              <p>Disciplina:</p>
-
-              <div className="volleyball">
-                <p>Basketball</p>
-              </div>
-            </div>
-          </div>
-        </article>
+         ))};
+      
         <figure className="add-container">
           <img
             className="add-btn"
@@ -168,30 +116,54 @@ function Entrenamientos() {
         handleSubmit={handleSubmit}
       >
         <Input
-          label={"Nombre del ejercicio"}
-          placeholder={"Ingresa el nombre del ejercicio"}
+          label={"Nombre del entrenamiento"}
+          placeholder={"Ingresa el nombre del entrenamiento"}
           type={"text"}
           name={"name"}
         />
 
         <Input
-          label={"Musculo que se enfoca"}
+          label={"Disciplina"}
           type={"select"}
-          name={"muscle"}
-          placeholder={"Musculo que se enfoca"}
+          name={"sport"}
+          placeholder={"Seleccione la disciplina"}
         >
-          <option value="pecho">Pecho</option>
-          <option value="espalda">Espalda</option>
-          <option value="pierna">Pierna</option>
-          <option value="brazos">Brazos</option>
+          <option value="Volleyball">Volleyball</option>
+          <option value="Soccer">Futbol</option>
+          <option value="Basketball">Baloncesto</option>
+          <option value="run">Atletismo</option>
         </Input>
 
         <Input
-          label={"Equipo a utilizar"}
-          placeholder={"Ingrese el equipo a utilizar"}
-          type={"text"}
-          name={"equipment"}
+          label={"Fecha del entreno"}
+          placeholder={"Ingrese la fecha del entreno"}
+          type={"date"}
+          name={"date"}
         />
+
+        <Input label={"Tipo"} type={"checkbox"} name={"checkboxOptions"}>
+          <label>
+            <input type="checkbox" name="individual" />
+            Individual
+          </label>
+          <label>
+            <input type="checkbox" name="grupal" />
+            Grupal
+          </label>
+        </Input>
+
+        <Input
+          label={"Ejercicios a realizar"}
+          placeholder={"Seleccione los ejercicios"}
+          type={"select"}
+          name={"exercises"}
+        >
+          <option value="press">Press</option>
+          <option value="remo">Remo</option>
+          <option value="squat">Squat</option>
+          <option value="curl">Curl</option>
+          <option value="cardio">Cardio</option>
+        </Input>
       </Dialog>
     </>
   );
