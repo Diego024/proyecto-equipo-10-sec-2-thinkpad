@@ -1,6 +1,10 @@
 import React from "react";
 import GoogleIcon from "./../../img/svg/google-icon.svg";
 import { useGoogleLogin } from "@react-oauth/google";
+import {
+  findPlayerByEmail,
+  updateDeportista,
+} from "../../../services/deportista.service";
 
 const GoogleLogInButton = () => {
   const GOOGLE_API = "https://www.googleapis.com/oauth2/v2/userinfo";
@@ -14,7 +18,7 @@ const GoogleLogInButton = () => {
   });
 
   const handleSuccessfullLogIn = async (tokenResponse) => {
-    saveInfo(await getUserInfo(tokenResponse.access_token));
+    await saveInfo(await getUserInfo(tokenResponse.access_token));
     window.location.href += "eventos";
   };
 
@@ -42,7 +46,19 @@ const GoogleLogInButton = () => {
     };
 
     localStorage.setItem("user", JSON.stringify(user));
-    console.log("Success");
+    await updatePlayerPicture(user);
+  };
+
+  const updatePlayerPicture = async (user) => {
+    try {
+      const player = await findPlayerByEmail(user.email);
+      player.picture = user.picture;
+      player.name = user.name;
+      player.last_name = user.last_name;
+      await updateDeportista(player._id, player);
+    } catch (error) {
+      console.error(error);
+    }
   };
 
   return (

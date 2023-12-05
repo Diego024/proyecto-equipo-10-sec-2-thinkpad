@@ -9,6 +9,7 @@ const deportistaController = require("../controllers/deportista.controller");
 //post
 router.get("/getAll/",deportistaController.findAll);
 router.get("/get/:identifier",deportistaIdParamsValidator,validateFields,deportistaController.finOneById);
+router.get("/get/email/:email",deportistaController.finOneByEmail);
 router.post(["/create","/create/:identifier"],createDeportistaValidator,validateFields,deportistaController.create); 
 router.delete("/:identifier",deportistaIdParamsValidator,validateFields,deportistaController.deleteById);
 

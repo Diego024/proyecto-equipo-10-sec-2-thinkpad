@@ -68,6 +68,7 @@ function Deportistas() {
 
   const fetchData = async () => {
     const players = await getAllDeportistas();
+    console.log("players", players);
     setPlayers(players);
   };
 

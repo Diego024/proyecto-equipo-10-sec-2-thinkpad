@@ -60,6 +60,20 @@ export const getOneDeportista = async (deportistaId)=>{
    }
 }
 
+export const findPlayerByEmail = async (email) => {
+    try {
+        if (!email) throw new Error("Correo electrónico es requerido");
+
+        const response = await axios.get(`${BASE_URL}/deportista/get/email/${email}`);
+        if (response.status === 200)
+            return response.data
+        else
+            return undefined
+    } catch (e) {
+        console.error("Error finding user by email", e.message);
+        return undefined;
+    }
+}
 
 export const deleteOneDeportista = async (deportistaId)=>{
     try{
