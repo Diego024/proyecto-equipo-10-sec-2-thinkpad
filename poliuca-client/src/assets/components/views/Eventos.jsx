@@ -6,9 +6,17 @@ import { getAllEventos } from "./../../../services/evento.service.js";
 import { useEffect, useState } from "react";
 import Header from "../layout/Header.jsx";
 import { getDayFromDate, formatDate, getDay } from "./../../utils.js";
+import { useNavigate } from "react-router-dom";
 
 function Eventos() {
   const [events, setEvents] = useState([]);
+
+  const navigate = useNavigate();
+  useEffect(() => {
+    if (!window.localStorage.getItem("user")) {
+      navigate("/");
+    }
+  }, []);
 
   useEffect(() => {
     fetchData();

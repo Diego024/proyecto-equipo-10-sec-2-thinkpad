@@ -14,6 +14,8 @@ import LogOutIcon from "./../../img/svg/logout-icon.svg";
 import NavItem from "./NavItem";
 
 const Header = () => {
+  const user = JSON.parse(localStorage.getItem("user"));
+
   return (
     <>
       <header className="nav">
@@ -30,14 +32,23 @@ const Header = () => {
             </figure>
           </label>
 
+          <div className="user-section">
+            <figure className="user-picture_container">
+              <img src={user.picture} alt="Username picture" />
+            </figure>
+            <p className="user-name">
+              {user.name} {user.last_name}
+            </p>
+          </div>
+
           <div className="nav-separator" />
 
-          <NavItem
+          {/* <NavItem
             title={"Mi Calendario"}
             icon={CalendarIcon}
             url={"/calendario"}
             alt={"Calendar Icon"}
-          />
+          /> */}
 
           <NavItem
             title={"Eventos del PoliUCA"}
@@ -67,12 +78,12 @@ const Header = () => {
             alt={"Sport events icon"}
           />
 
-          <NavItem
+          {/* <NavItem
             title={"Seguimientos"}
             icon={FollowUpsIcon}
             url={"/seguimientos"}
             alt={"Follow ups icon"}
-          />
+          /> */}
 
           <div className="nav-separator" />
 

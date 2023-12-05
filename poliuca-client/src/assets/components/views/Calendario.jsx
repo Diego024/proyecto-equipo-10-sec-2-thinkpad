@@ -1,8 +1,18 @@
 import "./../../css/calendario.scss";
 import Logo from "../icons/Logo.jsx";
 import Header from "../layout/Header.jsx";
+import { useNavigate } from "react-router-dom";
+import { useEffect } from "react";
 
 function Calendario() {
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    if (!window.localStorage.getItem("user")) {
+      navigate("/");
+    }
+  }, []);
+
   return (
     <>
       <Header />

@@ -12,6 +12,12 @@ import { useNavigate } from "react-router";
 function Deportistas() {
   const navigate = useNavigate();
 
+  useEffect(() => {
+    if (!window.localStorage.getItem("user")) {
+      navigate("/");
+    }
+  }, []);
+
   const initialFormData = {
     name: "",
     last_name: "",

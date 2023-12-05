@@ -1,19 +1,31 @@
-import { useEffect,useState } from "react";
+import { useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
 import "./../../css/gestioneventos.scss";
 import Header from "../layout/Header.jsx";
 import Dialog from "../layout/Dialog.jsx";
 import Input from "../layout/Input.jsx";
-import {getAllEventos,createdEvento} from "../../../services/evento.service.js"
+import {
+  getAllEventos,
+  createdEvento,
+} from "../../../services/evento.service.js";
 import { getDayFromDate, formatDate, getDay } from "./../../utils.js";
 
 function GestionEventos() {
-  const initialFormData={
-    title:"",
-    type_event:"",
-    place:"",
-    hour:"",
-    date_event:"",
-  }
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    if (!window.localStorage.getItem("user")) {
+      navigate("/");
+    }
+  }, []);
+
+  const initialFormData = {
+    title: "",
+    type_event: "",
+    place: "",
+    hour: "",
+    date_event: "",
+  };
   const [dialogOpen, setDialogOpen] = useState(false);
   const [eventos, setEvento] = useState([]);
   const [formData, setFormData] = useState(initialFormData);
@@ -31,7 +43,7 @@ function GestionEventos() {
     setDialogOpen(false);
   };
 
-  const handleSubmit = async(e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
 
     const errorsValidation = /*validateForm(formData) */ [];
@@ -68,43 +80,42 @@ function GestionEventos() {
         <a className="btn-nuevo-evento" onClick={handleOpenDialog}>
           Agregar nuevo evento
         </a>
-        {eventos.map((event)=>(
-
-        
+        {eventos.map((event) => (
           <article className="card lunes">
-          <div className="date-line-eventos">
-            <p className="date-eventos">{formatDate(event.date_event)}</p>
-          </div>
-          <div className="date-container">
-            <p className="day">{getDayFromDate(event.date_event)}</p>
-            <p className="month">{getDay(event.date_event).slice(0, 3)}</p>
-          </div>
-
-          <div className="rectangle-container">
-            <img
-              className="rectangle"
-              src="../../src/assets/img/rectangle.png"
-              alt="rectanguloQueSepara"
-            />
-          </div>
-          <div className="event-container">
-            <div className="event-item">
-              <img src="../../src/assets/img/staff.png" alt="staff" />
-              <p className="institucion">{event.title}</p>
+            <div className="date-line-eventos">
+              <p className="date-eventos">{formatDate(event.date_event)}</p>
+            </div>
+            <div className="date-container">
+              <p className="day">{getDayFromDate(event.date_event)}</p>
+              <p className="month">{getDay(event.date_event).slice(0, 3)}</p>
             </div>
 
-            <div className="event-item">
-              <img src="../../src/assets/img/time 1.png" alt="reloj" />
-              <p className="duracion-evento">{event.hour}</p>
+            <div className="rectangle-container">
+              <img
+                className="rectangle"
+                src="../../src/assets/img/rectangle.png"
+                alt="rectanguloQueSepara"
+              />
             </div>
+            <div className="event-container">
+              <div className="event-item">
+                <img src="../../src/assets/img/staff.png" alt="staff" />
+                <p className="institucion">{event.title}</p>
+              </div>
 
-            <div className="event-item">
-              <img src="../../src/assets/img/maps.png" alt="" />
-              <p className="ubicacion-evento">{event.place}</p>
+              <div className="event-item">
+                <img src="../../src/assets/img/time 1.png" alt="reloj" />
+                <p className="duracion-evento">{event.hour}</p>
+              </div>
+
+              <div className="event-item">
+                <img src="../../src/assets/img/maps.png" alt="" />
+                <p className="ubicacion-evento">{event.place}</p>
+              </div>
             </div>
-          </div>          
-        </article>
-        ))};
+          </article>
+        ))}
+        ;
       </section>
       <Dialog
         title={"Registro de entrenamientos"}

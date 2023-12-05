@@ -36,7 +36,7 @@ export const getAllEquipos = async ()=>{
     try {
         const response = await axios.get(`${BASE_URL}/equipo/getAll/`);
               
-        console.log(response.data.equipo);
+        // console.log(response.data.equipo);
         if(response.status === 200) return response.data.equipo;
         else return[];
         

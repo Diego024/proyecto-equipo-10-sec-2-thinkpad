@@ -1,21 +1,30 @@
-import { useEffect,useState } from "react";
+import { useEffect, useState } from "react";
 import "./../../css/entrenamientos.scss";
 import Header from "../layout/Header.jsx";
 import Logo from "../icons/Logo.jsx";
 import Dialog from "../layout/Dialog.jsx";
 import Input from "../layout/Input.jsx";
-import{getAllRutinas,createdRutina} from "../../../services/rutina.service.js"
+import {
+  getAllRutinas,
+  createdRutina,
+} from "../../../services/rutina.service.js";
 import { useNavigate } from "react-router-dom";
 
 function Entrenamientos() {
   const navigate = useNavigate();
 
-  const initialFormData={
-    name:"",
-    discipline:"",
-    tipo:"",
-    exercise:[],
-  }
+  useEffect(() => {
+    if (!window.localStorage.getItem("user")) {
+      navigate("/");
+    }
+  }, []);
+
+  const initialFormData = {
+    name: "",
+    discipline: "",
+    tipo: "",
+    exercise: [],
+  };
 
   const [dialogOpen, setDialogOpen] = useState(false);
   const [rutinas, setRutina] = useState([]);
@@ -33,7 +42,7 @@ function Entrenamientos() {
   const handleCloseDialog = () => {
     setDialogOpen(false);
   };
-  const handleSubmit = async(e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
 
     const errorsValidation = /*validateForm(formData) */ [];
@@ -58,58 +67,58 @@ function Entrenamientos() {
     setRutina(rutinas);
   };
 
-  const handleChange = (e)=>{
+  const handleChange = (e) => {
     console.log(e.target.value);
-    formData.tipo=e.target.value;
-  }
+    formData.tipo = e.target.value;
+  };
   return (
     <>
-         <Header />
+      <Header />
       <section className="cards body-div">
         <h1 className="page-title">Gestion de Entrenamientos</h1>
         <div className="container-opciones">
-          <div className="deportistas" onClick={() => navigate("/ejercicios")}>Ejercicios</div>
+          <div className="deportistas" onClick={() => navigate("/ejercicios")}>
+            Ejercicios
+          </div>
           <div className="equipos select">Entrenamientos</div>
         </div>
         {/* <a className="btn-agregar-deportista">Agregar nuevo equipo</a> */}
         <a className="exercise" onClick={handleOpenDialog}>
           Agregar nueva rutina{" "}
         </a>
-
-        {rutinas.map((rutina)=>(
-
-        <article className="card bkb" onClick={handleOpenDialog}>
-          <div className="ball-container bkb">
-            <img
-              src="../../src/assets/img/basket-ball 1.png"
-              alt="volleyball"
-            />
-          </div>
-
-          <div className="deporte-container">
-            <div className="seleccion basket">
-              <p>{rutina.name}</p>
+        {rutinas.map((rutina) => (
+          <article className="card bkb" onClick={handleOpenDialog}>
+            <div className="ball-container bkb">
+              <img
+                src="../../src/assets/img/basket-ball 1.png"
+                alt="volleyball"
+              />
             </div>
-            <div className="fecha-creacion">
-              <p>Tipo: </p>
-              <p className="bkb">{rutina.tipo}</p>
-            </div>
-            <div className="numero-jugadores">
-              <p>Disciplina:</p>
 
-              <div className="basketball">
-                <p>{rutina.discipline}</p>
+            <div className="deporte-container">
+              <div className="seleccion basket">
+                <p>{rutina.name}</p>
+              </div>
+              <div className="fecha-creacion">
+                <p>Tipo: </p>
+                <p className="bkb">{rutina.tipo}</p>
+              </div>
+              <div className="numero-jugadores">
+                <p>Disciplina:</p>
+
+                <div className="basketball">
+                  <p>{rutina.discipline}</p>
+                </div>
               </div>
             </div>
-          </div>
-          <br />
-          <div>
-            <button>Actualizar</button>
-            <button>Eliminar</button>
-          </div>
-        </article>
-         ))};
-      
+            <br />
+            <div>
+              <button>Actualizar</button>
+              <button>Eliminar</button>
+            </div>
+          </article>
+        ))}
+        ;
         <figure className="add-container">
           <img
             className="add-btn"
@@ -150,13 +159,23 @@ function Entrenamientos() {
           name={"date"}
         />
 
-        <Input label={"Tipo"} type={"checkbox"} >
+        <Input label={"Tipo"} type={"checkbox"}>
           <label>
-            <input type="radio" name="tipo" value="Individual" onChange={handleChange} />
+            <input
+              type="radio"
+              name="tipo"
+              value="Individual"
+              onChange={handleChange}
+            />
             Individual
           </label>
           <label>
-            <input type="radio" name="tipo" value="Grupal" onChange={handleChange} />
+            <input
+              type="radio"
+              name="tipo"
+              value="Grupal"
+              onChange={handleChange}
+            />
             Grupal
           </label>
         </Input>
@@ -174,7 +193,6 @@ function Entrenamientos() {
           <option value="cardio">Cardio</option>
         </Input>
       </Dialog>
-
     </>
   );
 }

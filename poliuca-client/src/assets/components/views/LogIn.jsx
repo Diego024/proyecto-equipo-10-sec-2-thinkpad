@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import "./../../css/Login.scss";
 import Logo from "./../../img/svg/Logo.svg";
@@ -9,9 +9,13 @@ const LogIn = (props) => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    // navigate("/calendario");
-    alert("Tienes que ingresar con tu correo UCA");
+
+    alert("Usuario no encontrado");
   };
+
+  useEffect(() => {
+    window.localStorage.removeItem("user");
+  }, []);
 
   return (
     <div className="login-view">
@@ -26,22 +30,22 @@ const LogIn = (props) => {
           <GoogleLogInButton />
 
           <div className="login-separator" />
-          <form>
+          <form onSubmit={handleSubmit}>
             <input
               type="text"
               name="username"
               id="username"
               placeholder="Usuario"
+              required={true}
             />
             <input
               type="password"
               name="password"
               id="password"
               placeholder="Contraseña"
+              required={true}
             />
-            <button type="submit" onClick={handleSubmit}>
-              Iniciar Sesión
-            </button>
+            <button type="submit">Iniciar Sesión</button>
           </form>
         </section>
       </main>
