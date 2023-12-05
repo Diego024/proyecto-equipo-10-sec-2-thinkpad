@@ -83,9 +83,7 @@ function Ejercicios() {
         <h1 className="page-title">Gestion de entrenamientos</h1>
         <div className="container-opciones2">
           <div className="ejercicios select">Ejercicios</div>
-          <div className="rutinas" onClick={() => navigate("/entrenamientos")}>
-            Entrenamientos
-          </div>
+          {/* <div className="rutinas">Entrenamientos</div> */}
         </div>
         <a className="btn-nuevo-ejercicio" onClick={handleOpenDialog}>
           Agregar nuevo ejercicio
