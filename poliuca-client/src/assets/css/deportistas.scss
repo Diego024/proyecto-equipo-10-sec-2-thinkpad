@@ -89,11 +89,20 @@ body {
       text-align: center;
       background-color: white;
       min-width: 4rem;
+      max-width: 4.2rem;
       max-height: 4.2rem;
       margin: 0.725rem;
       border-radius: 1rem;
       line-height: 1.2;
       font-size: 0.8rem;
+
+      img {
+        border-radius: 1rem;
+      }
+    }
+
+    .no-user_picture {
+      padding: 0.5rem;
     }
 
     .info-container {

@@ -8,6 +8,7 @@ import {
   getAllDeportistas,
 } from "../../../services/deportista.service.js";
 import { useNavigate } from "react-router";
+import DefaultPlayerPicture from "./../../img/icon/user-icon.png";
 
 function Deportistas() {
   const navigate = useNavigate();
@@ -107,7 +108,15 @@ function Deportistas() {
         {players.map((player) => (
           <article className="card">
             <div className="profile-container">
-              <img src={player.picture} alt="Player profile picture" />
+              {player.picture ? (
+                <img src={player.picture} alt="Player profile picture" />
+              ) : (
+                <img
+                  src={DefaultPlayerPicture}
+                  className="no-user_picture"
+                  alt="Player profile picture"
+                />
+              )}
             </div>
 
             <div className="info-container">
