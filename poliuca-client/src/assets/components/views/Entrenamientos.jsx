@@ -33,7 +33,6 @@ function Entrenamientos() {
   const handleCloseDialog = () => {
     setDialogOpen(false);
   };
-
   const handleSubmit = async(e) => {
     e.preventDefault();
 
@@ -58,6 +57,11 @@ function Entrenamientos() {
     const rutinas = await getAllRutinas();
     setRutina(rutinas);
   };
+
+  const handleChange = (e)=>{
+    console.log(e.target.value);
+    formData.tipo=e.target.value;
+  }
   return (
     <>
          <Header />
@@ -74,7 +78,7 @@ function Entrenamientos() {
 
         {rutinas.map((rutina)=>(
 
-        <article className="card bkb">
+        <article className="card bkb" onClick={handleOpenDialog}>
           <div className="ball-container bkb">
             <img
               src="../../src/assets/img/basket-ball 1.png"
@@ -97,6 +101,11 @@ function Entrenamientos() {
                 <p>{rutina.discipline}</p>
               </div>
             </div>
+          </div>
+          <br />
+          <div>
+            <button>Actualizar</button>
+            <button>Eliminar</button>
           </div>
         </article>
          ))};
@@ -141,13 +150,13 @@ function Entrenamientos() {
           name={"date"}
         />
 
-        <Input label={"Tipo"} type={"checkbox"} name={"checkboxOptions"}>
+        <Input label={"Tipo"} type={"checkbox"} >
           <label>
-            <input type="checkbox" name="individual" />
+            <input type="radio" name="tipo" value="Individual" onChange={handleChange} />
             Individual
           </label>
           <label>
-            <input type="checkbox" name="grupal" />
+            <input type="radio" name="tipo" value="Grupal" onChange={handleChange} />
             Grupal
           </label>
         </Input>
@@ -165,6 +174,7 @@ function Entrenamientos() {
           <option value="cardio">Cardio</option>
         </Input>
       </Dialog>
+
     </>
   );
 }
