@@ -1,6 +1,6 @@
 import axios from "axios";
 
-const BASE_URL = "http://localhost:3500/api";
+const BASE_URL = "https://delightful-puce-tunic.cyclic.app/api/";
 
 export const createdEvento = async (formData) => {
     try {
