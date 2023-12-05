@@ -14,7 +14,7 @@ import LogOutIcon from "./../../img/svg/logout-icon.svg";
 import NavItem from "./NavItem";
 
 const Header = () => {
-  const user = JSON.parse(localStorage.getItem("user"));
+  const user = JSON.parse(localStorage.getItem("user")) || null;
 
   return (
     <>
@@ -34,10 +34,10 @@ const Header = () => {
 
           <div className="user-section">
             <figure className="user-picture_container">
-              <img src={user.picture} alt="Username picture" />
+              <img src={user && user.picture} alt="Username picture" />
             </figure>
             <p className="user-name">
-              {user.name} {user.last_name}
+              {user && user.name} {user && user.last_name}
             </p>
           </div>
 

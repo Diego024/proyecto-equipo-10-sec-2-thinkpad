@@ -1,6 +1,6 @@
 import { useState } from "react";
 import "./app.scss";
-import { BrowserRouter, Route, Routes } from "react-router-dom";
+import { BrowserRouter, Navigate, Route, Routes } from "react-router-dom";
 import Calendario from "./assets/components/views/Calendario";
 import LogIn from "./assets/components/views/LogIn";
 import Eventos from "./assets/components/views/Eventos";
@@ -18,13 +18,14 @@ function App() {
         <BrowserRouter>
           <Routes>
             <Route path="/" element={<LogIn />} />
-            <Route path="/calendario" element={<Calendario />} />
+            {/* <Route path="/calendario" element={<Calendario />} /> */}
             <Route path="/eventos" element={<Eventos />} />
             <Route path="/deportistas" element={<Deportistas />} />
             <Route path="/equipos" element={<Equipos />} />
-            <Route path="/entrenamientos" element={<Entrenamientos />} />
+            {/* <Route path="/entrenamientos" element={<Entrenamientos />} /> */}
             <Route path="/ejercicios" element={<Ejercicios />} />
             <Route path="/gestioneventos" element={<GestionEventos />} />
+            <Route path="*" element={<Navigate to="/" />} />
           </Routes>
         </BrowserRouter>
       </GoogleOAuthProvider>
