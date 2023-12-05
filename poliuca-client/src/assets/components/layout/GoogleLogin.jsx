@@ -15,7 +15,7 @@ const GoogleLogInButton = () => {
 
   const handleSuccessfullLogIn = async (tokenResponse) => {
     saveInfo(await getUserInfo(tokenResponse.access_token));
-    window.location.href += "calendario";
+    window.location.href += "eventos";
   };
 
   const getUserInfo = async (accessToken) => {
