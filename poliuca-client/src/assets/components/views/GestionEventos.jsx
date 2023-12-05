@@ -4,6 +4,10 @@ import "./../../css/gestioneventos.scss";
 import Header from "../layout/Header.jsx";
 import Dialog from "../layout/Dialog.jsx";
 import Input from "../layout/Input.jsx";
+import Rectangle from "./../../img/rectangle.png";
+import StaffIcon from "./../../img/staff.png";
+import ClockIcon from "./../../img/time.png";
+import MapIcon from "./../../img/maps.png";
 import {
   getAllEventos,
   createdEvento,
@@ -93,23 +97,23 @@ function GestionEventos() {
             <div className="rectangle-container">
               <img
                 className="rectangle"
-                src="../../src/assets/img/rectangle.png"
+                src={Rectangle}
                 alt="rectanguloQueSepara"
               />
             </div>
             <div className="event-container">
               <div className="event-item">
-                <img src="../../src/assets/img/staff.png" alt="staff" />
+                <img src={StaffIcon} alt="staff" />
                 <p className="institucion">{event.title}</p>
               </div>
 
               <div className="event-item">
-                <img src="../../src/assets/img/time 1.png" alt="reloj" />
+                <img src={ClockIcon} alt="reloj" />
                 <p className="duracion-evento">{event.hour}</p>
               </div>
 
               <div className="event-item">
-                <img src="../../src/assets/img/maps.png" alt="" />
+                <img src={MapIcon} alt="" />
                 <p className="ubicacion-evento">{event.place}</p>
               </div>
             </div>

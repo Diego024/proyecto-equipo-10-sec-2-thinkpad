@@ -1,12 +1,13 @@
 import "./../../css/eventos.scss";
-import Logo from "./../icons/Logo.jsx";
-import Reloj from "./../icons/Reloj.jsx";
-import Maps from "./../icons/Maps.jsx";
 import { getAllEventos } from "./../../../services/evento.service.js";
 import { useEffect, useState } from "react";
 import Header from "./../layout/Header.jsx";
 import { getDayFromDate, formatDate, getDay } from "./../../utils.js";
 import { useNavigate } from "react-router-dom";
+import Rectangle from "./../../img/rectangle.png";
+import StaffIcon from "./../../img/staff.png";
+import ClockIcon from "./../../img/time.png";
+import MapIcon from "./../../img/maps.png";
 
 function Eventos() {
   const [events, setEvents] = useState([]);
@@ -47,23 +48,23 @@ function Eventos() {
             <div className="rectangle-container">
               <img
                 className="rectangle"
-                src="./../../src/assets/img/rectangle.png"
+                src={Rectangle}
                 alt="rectanguloQueSepara"
               />
             </div>
             <div className="event-container">
               <div className="event-item">
-                <img src="./../../src/assets/img/staff.png" alt="staff" />
+                <img src={StaffIcon} alt="staff" />
                 <p className="institucion">{event.title}</p>
               </div>
 
               <div className="event-item">
-                <img src="./../../src/assets/img/time 1.png" alt="reloj" />
+                <img src={ClockIcon} alt="reloj" />
                 <p className="duracion-evento">{event.hour}</p>
               </div>
 
               <div className="event-item">
-                <img src="./../../src/assets/img/maps.png" alt="" />
+                <img src={MapIcon} alt="" />
                 <p className="ubicacion-evento">{event.place}</p>
               </div>
             </div>
