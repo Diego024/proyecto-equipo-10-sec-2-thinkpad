@@ -1,9 +1,9 @@
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import "./../../css/gestioneventos.scss";
-import Header from "../layout/Header.jsx";
-import Dialog from "../layout/Dialog.jsx";
-import Input from "../layout/Input.jsx";
+import Header from "./../layout/Header.jsx";
+import Dialog from "./../layout/Dialog.jsx";
+import Input from "./../layout/Input.jsx";
 import Rectangle from "./../../img/rectangle.png";
 import StaffIcon from "./../../img/staff.png";
 import ClockIcon from "./../../img/time.png";
@@ -11,7 +11,7 @@ import MapIcon from "./../../img/maps.png";
 import {
   getAllEventos,
   createdEvento,
-} from "../../../services/evento.service.js";
+} from "./../../../services/evento.service.js";
 import { getDayFromDate, formatDate, getDay } from "./../../utils.js";
 
 function GestionEventos() {

@@ -9,6 +9,7 @@ import {
 } from "../../../services/deportista.service.js";
 import { useNavigate } from "react-router";
 import DefaultPlayerPicture from "./../../img/icon/user-icon.png";
+import AddIcon from "./../../img/Add.png";
 
 function Deportistas() {
   const navigate = useNavigate();
@@ -135,11 +136,7 @@ function Deportistas() {
         ))}
 
         <figure className="add-container" onClick={handleOpenDialog}>
-          <img
-            className="add-btn"
-            src="../../src/assets/img/Add.png"
-            alt="add"
-          />
+          <img className="add-btn" src={AddIcon} alt="add" />
         </figure>
       </section>
       <Dialog

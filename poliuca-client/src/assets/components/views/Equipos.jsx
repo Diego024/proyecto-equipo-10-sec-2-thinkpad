@@ -1,14 +1,15 @@
 import "./../../css/equipos.scss";
-import Header from "../layout/Header.jsx";
+import Header from "./../layout/Header.jsx";
 import { useNavigate } from "react-router";
-import Dialog from "../layout/Dialog.jsx";
-import Input from "../layout/Input.jsx";
+import Dialog from "./../layout/Dialog.jsx";
+import Input from "./../layout/Input.jsx";
 import {
   getAllEquipos,
   createdEquipo,
-} from "../../../services/equipo.service.js";
+} from "./../../../services/equipo.service.js";
 import { useEffect, useState } from "react";
 import { formatDate } from "./../../utils.js";
+import BacketballIcon from "./../../img/basket-ball 1.png";
 
 function Equipos() {
   const navigate = useNavigate();
@@ -98,10 +99,7 @@ function Equipos() {
         {equipos.map((equipo) => (
           <article className="card bkb">
             <div className="ball-container bkb">
-              <img
-                src="../../src/assets/img/basket-ball 1.png"
-                alt="volleyball"
-              />
+              <img src={BacketballIcon} alt="volleyball" />
             </div>
             <p name="_id" hidden value={equipo._id}></p>
             <div className="deporte-container">
@@ -126,7 +124,7 @@ function Equipos() {
         <figure className="add-container">
           <img
             className="add-btn"
-            src="../../src/assets/img/Add.png"
+            src="./../../src/assets/img/Add.png"
             alt="add"
           />
 

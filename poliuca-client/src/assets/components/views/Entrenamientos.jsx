@@ -1,13 +1,13 @@
 import { useEffect, useState } from "react";
 import "./../../css/entrenamientos.scss";
-import Header from "../layout/Header.jsx";
-import Logo from "../icons/Logo.jsx";
-import Dialog from "../layout/Dialog.jsx";
-import Input from "../layout/Input.jsx";
+import Header from "./../layout/Header.jsx";
+import Logo from "./../icons/Logo.jsx";
+import Dialog from "./../layout/Dialog.jsx";
+import Input from "./../layout/Input.jsx";
 import {
   getAllRutinas,
   createdRutina,
-} from "../../../services/rutina.service.js";
+} from "./../../../services/rutina.service.js";
 import { useNavigate } from "react-router-dom";
 
 function Entrenamientos() {
@@ -90,7 +90,7 @@ function Entrenamientos() {
           <article className="card bkb" onClick={handleOpenDialog}>
             <div className="ball-container bkb">
               <img
-                src="../../src/assets/img/basket-ball 1.png"
+                src="./../../src/assets/img/basket-ball 1.png"
                 alt="volleyball"
               />
             </div>
@@ -122,7 +122,7 @@ function Entrenamientos() {
         <figure className="add-container">
           <img
             className="add-btn"
-            src="../../src/assets/img/Add.png"
+            src="./../../src/assets/img/Add.png"
             alt="add"
           />
         </figure>

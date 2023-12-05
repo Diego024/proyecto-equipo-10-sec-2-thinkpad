@@ -1,13 +1,17 @@
 import { useEffect, useState } from "react";
 import "./../../css/ejercicios.scss";
-import Header from "../layout/Header.jsx";
-import Dialog from "../layout/Dialog.jsx";
-import Input from "../layout/Input.jsx";
+import Header from "./../layout/Header.jsx";
+import Dialog from "./../layout/Dialog.jsx";
+import Input from "./../layout/Input.jsx";
+import Rectangle from "./../../img/rectangle.png";
+import TargetIcon from "./../../img/target.png";
+import PilatesIcon from "./../../img/pilates.png";
+import AbsIcon from "./../../img/abs.png";
 import { useNavigate } from "react-router";
 import {
   getAllEjercicios,
   createdEjercicio,
-} from "../../../services/ejercicio.service.js";
+} from "./../../../services/ejercicio.service.js";
 
 function Ejercicios() {
   const navigate = useNavigate();
@@ -91,13 +95,13 @@ function Ejercicios() {
         {ejercicios.map((ejercicio) => (
           <article className="card abdomen">
             <div className="parteCuerpo-container">
-              <img src="../../src/assets/img/abs.png" alt="abs" />
+              <img src={AbsIcon} alt="abs" />
             </div>
 
             <div className="rectangle-container">
               <img
                 className="rectangle"
-                src="../../src/assets/img/rectangle.png"
+                src={Rectangle}
                 alt="rectanguloQueSepara"
               />
             </div>
@@ -107,12 +111,12 @@ function Ejercicios() {
               </div>
 
               <div className="ejercicio-item">
-                <img src="../../src/assets/img/target.png" alt="" />
+                <img src={TargetIcon} alt="" />
                 <p className="body-focus">{ejercicio.grupo_muscular}</p>
               </div>
 
               <div className="ejercicio-item">
-                <img src="../../src/assets/img/pilates.png" alt="staff" />
+                <img src={PilatesIcon} alt="staff" />
                 <p className="material">{ejercicio.equipo}</p>
               </div>
             </div>
