@@ -50,6 +50,8 @@ function Ejercicios() {
       await createdEjercicio(formData);
       console.log(formData);
       setFormData(initialFormData);
+      handleCloseDialog();
+      fetchData();
     } catch (error) {
       alert("ERROR al guardar el ejercicio: " + error);
     }
@@ -61,6 +63,10 @@ function Ejercicios() {
     setEjercicio(ejercicios);
   };
 
+  const handleSelect = (e)=>{
+    console.log(e.target.value);
+    formData.grupo_muscular=e.target.value;
+  }
   return (
     <>
       <Header />
@@ -125,16 +131,47 @@ function Ejercicios() {
 
         <Input
           label={"Musculo que se enfoca"}
-          type={"select"}
-          name={"grupo_muscular"}
-          placeholder={"Musculo que se enfoca"}
-          formData={formData}
-          setFormData={setFormData}
+          type={"checkbox"}        
+          
         >
-          <option value="pecho">Pecho</option>
-          <option value="espalda">Espalda</option>
-          <option value="pierna">Pierna</option>
-          <option value="brazos">Brazos</option>
+         <label>
+            <input
+              type="radio"
+              name="grupo_muscular"
+             value="pecho"
+              onChange={handleSelect}
+            />
+            Pecho
+          </label>
+          <label>
+            <input
+              type="radio"
+              name="grupo_muscular"
+              value="espalda"
+              onChange={handleSelect}
+            />
+            Espalda
+          </label>
+
+          <label>
+            <input
+              type="radio"
+              name="grupo_muscular"
+              value="pierna"
+              onChange={handleSelect}
+            />
+            Pierna
+          </label>
+
+          <label>
+            <input
+              type="radio"
+              name="grupo_muscular"
+              value="brazos"
+              onChange={handleSelect}
+            />
+            Brazos
+          </label>
         </Input>
 
         <Input
